@@ -1,2 +1,4 @@
-# sitewhere-k8s-model
-SiteWhere Kubernetes entity model
+# SiteWhere Kubernetes Model
+
+The SiteWhere Kubernetes resource model contains Java entities which correspond
+to k8s custom resource definitions.
