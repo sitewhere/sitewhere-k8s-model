@@ -34,14 +34,19 @@ Configures a microservice which is associated with a `SiteWhereInstance`.
 Creates a tenant associated with a `SiteWhereInstance`. Each tenant has tenant 
 engines which run within a `SiteWhereMicroservice`.
 
+### `SiteWhereTenantEngine`
+Specifies the configuration and other details for a single tenant engine 
+(microservice + tenant combination). When a new tenant is initially added, the 
+tenant engine configuration is copied based on the `TenantEngineConfigurationTemplate` 
+associated with the tenant.
+
+### `TenantConfigurationTemplate`
+Gathers a list of `TenantEngineConfigurationTemplate` that will be used for a given
+tenant configuration.
+
 ### `TenantEngineConfigurationTemplate`
 Specifies a tenant-level configuration options which are used to set the
 initial configuration for the tenant engines running within the microservices.
-
-### `TenantEngineConfiguration`
-Specifies the configuration for a single tenant engine (microservice + tenant combination).
-When a new tenant is initially added, the tenant engine configuration is copied from
-the `TenantEngineConfigurationTemplate` associated with the tenant.
 
 ### `TenantEngineDatasetTemplate`
 Specifies a set of scripts which are used to populate initial data an individual
