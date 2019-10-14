@@ -9,17 +9,14 @@ instance level or at the tenant level.
 
 ### `SiteWhereInstance`
 Delares a SiteWhere instance which creates name and namespace for other
-resources to be attached to.
+resources to be attached to. This resource contains the global instance
+configuration which is bootstrapped using a reference to an
+`InstanceConfigurationTemplate`.
 
 ### `InstanceConfigurationTemplate`
 Specifies global configuration options which may be used when creating 
 a new instance. A `SiteWhereInstance` references a instance configuration
 template by name in order to bootstrap the configuration.
-
-### `InstanceConfiguration`
-Specifies the global configuration used by an `SiteWhereInstance`. When an
-instance resource is created, it references an `InstanceConfigurationTemplate`
-which is used to populate the initial configuration.
 
 ### `InstanceDatasetTemplate`
 Specifies a set of scripts which are executed to populate instance data
