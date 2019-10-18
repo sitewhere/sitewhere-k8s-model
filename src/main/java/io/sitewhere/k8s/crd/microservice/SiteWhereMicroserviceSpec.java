@@ -42,6 +42,9 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Pod specification */
     private MicroservicePodSpecification podSpec;
 
+    /** Service specification */
+    private MicroserviceServiceSpecification serviceSpec;
+
     /** Debug specification */
     private MicroserviceDebugSpecification debug;
 
@@ -91,6 +94,14 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 
     public void setPodSpec(MicroservicePodSpecification podSpec) {
 	this.podSpec = podSpec;
+    }
+
+    public MicroserviceServiceSpecification getServiceSpec() {
+	return serviceSpec;
+    }
+
+    public void setServiceSpec(MicroserviceServiceSpecification serviceSpec) {
+	this.serviceSpec = serviceSpec;
     }
 
     public MicroserviceDebugSpecification getDebug() {
