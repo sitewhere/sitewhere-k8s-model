@@ -9,11 +9,11 @@ buildscript {
 
 apply plugin: 'distribution'
 
-ext['fabric8.version'] = '4.6.0'
+ext['fabric8.version'] = '4.6.1'
     
 allprojects {
     group = 'com.sitewhere'
-	version = '0.0.3'
+	version = '0.0.4'
 	
     repositories {
         maven { url "http://repo.maven.apache.org/maven2" }

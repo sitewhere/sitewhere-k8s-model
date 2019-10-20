@@ -8,9 +8,8 @@
 package io.sitewhere.k8s.crd.tenant;
 
 import io.fabric8.kubernetes.client.CustomResourceList;
-import io.sitewhere.k8s.crd.microservice.SiteWhereMicroservice;
 
-public class SiteWhereTenantList extends CustomResourceList<SiteWhereMicroservice> {
+public class SiteWhereTenantList extends CustomResourceList<SiteWhereTenant> {
 
     /** Serial version UID */
     private static final long serialVersionUID = -3191717185086264049L;
