@@ -20,4 +20,15 @@ public class TenantEngineConfigurationTemplateSpec implements KubernetesResource
 
     /** Serial version UID */
     private static final long serialVersionUID = -669286121084379993L;
+
+    /** Configuration content */
+    private String configuration;
+
+    public String getConfiguration() {
+	return configuration;
+    }
+
+    public void setConfiguration(String configuration) {
+	this.configuration = configuration;
+    }
 }

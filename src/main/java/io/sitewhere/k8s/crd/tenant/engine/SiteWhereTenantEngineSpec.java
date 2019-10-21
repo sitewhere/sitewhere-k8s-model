@@ -20,4 +20,15 @@ public class SiteWhereTenantEngineSpec implements KubernetesResource {
 
     /** Serial version UID */
     private static final long serialVersionUID = 2158475838180651503L;
+
+    /** Current engine configuration */
+    private String configuration;
+
+    public String getConfiguration() {
+	return configuration;
+    }
+
+    public void setConfiguration(String configuration) {
+	this.configuration = configuration;
+    }
 }
