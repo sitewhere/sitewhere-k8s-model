@@ -21,25 +21,14 @@ public class InstanceConfigurationTemplateSpec implements KubernetesResource {
     /** Serial version UID */
     private static final long serialVersionUID = -3283412961517074958L;
 
-    /** Instance configuration */
-    private String instanceConfiguration;
+    /** Global configuration */
+    private String configuration;
 
-    /** Web configuration */
-    private String webConfiguration;
-
-    public String getInstanceConfiguration() {
-	return instanceConfiguration;
+    public String getConfiguration() {
+	return configuration;
     }
 
-    public void setInstanceConfiguration(String instanceConfiguration) {
-	this.instanceConfiguration = instanceConfiguration;
-    }
-
-    public String getWebConfiguration() {
-	return webConfiguration;
-    }
-
-    public void setWebConfiguration(String webConfiguration) {
-	this.webConfiguration = webConfiguration;
+    public void setConfiguration(String configuration) {
+	this.configuration = configuration;
     }
 }

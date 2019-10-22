@@ -15,6 +15,9 @@ import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
 import io.sitewhere.k8s.crd.instance.configuration.DoneableInstanceConfigurationTemplate;
 import io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplate;
 import io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplateList;
+import io.sitewhere.k8s.crd.instance.dataset.DoneableInstanceDatasetTemplate;
+import io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplate;
+import io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplateList;
 import io.sitewhere.k8s.crd.microservice.DoneableSiteWhereMicroservice;
 import io.sitewhere.k8s.crd.microservice.SiteWhereMicroservice;
 import io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceList;
@@ -59,6 +62,13 @@ public interface ISiteWhereKubernetesClient {
      * @return
      */
     MixedOperation<InstanceConfigurationTemplate, InstanceConfigurationTemplateList, DoneableInstanceConfigurationTemplate, Resource<InstanceConfigurationTemplate, DoneableInstanceConfigurationTemplate>> getInstanceConfigurationTemplates();
+
+    /**
+     * Gets context for operating on SiteWhere instance configuration templates.
+     * 
+     * @return
+     */
+    MixedOperation<InstanceDatasetTemplate, InstanceDatasetTemplateList, DoneableInstanceDatasetTemplate, Resource<InstanceDatasetTemplate, DoneableInstanceDatasetTemplate>> getInstanceDatasetTemplates();
 
     /**
      * Gets context for operating on SiteWhere tenants.

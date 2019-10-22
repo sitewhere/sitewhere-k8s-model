@@ -28,10 +28,7 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
     private String configurationTemplate;
 
     /** Global instance XML configuration */
-    private String instanceConfiguration;
-
-    /** Global web XML configuration */
-    private String webConfiguration;
+    private String configuration;
 
     public String getInstanceNamespace() {
 	return instanceNamespace;
@@ -49,19 +46,11 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
 	this.configurationTemplate = configurationTemplate;
     }
 
-    public String getInstanceConfiguration() {
-	return instanceConfiguration;
+    public String getConfiguration() {
+	return configuration;
     }
 
-    public void setInstanceConfiguration(String instanceConfiguration) {
-	this.instanceConfiguration = instanceConfiguration;
-    }
-
-    public String getWebConfiguration() {
-	return webConfiguration;
-    }
-
-    public void setWebConfiguration(String webConfiguration) {
-	this.webConfiguration = webConfiguration;
+    public void setConfiguration(String configuration) {
+	this.configuration = configuration;
     }
 }

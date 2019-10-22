@@ -17,6 +17,9 @@ import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
 import io.sitewhere.k8s.crd.instance.configuration.DoneableInstanceConfigurationTemplate;
 import io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplate;
 import io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplateList;
+import io.sitewhere.k8s.crd.instance.dataset.DoneableInstanceDatasetTemplate;
+import io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplate;
+import io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplateList;
 import io.sitewhere.k8s.crd.microservice.DoneableSiteWhereMicroservice;
 import io.sitewhere.k8s.crd.microservice.SiteWhereMicroservice;
 import io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceList;
@@ -89,6 +92,21 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	}
 	return getClient().customResources(crd, InstanceConfigurationTemplate.class,
 		InstanceConfigurationTemplateList.class, DoneableInstanceConfigurationTemplate.class);
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInstanceDatasetTemplates()
+     */
+    @Override
+    public MixedOperation<InstanceDatasetTemplate, InstanceDatasetTemplateList, DoneableInstanceDatasetTemplate, Resource<InstanceDatasetTemplate, DoneableInstanceDatasetTemplate>> getInstanceDatasetTemplates() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_IDT_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_IDT_CRD_NAME));
+	}
+	return getClient().customResources(crd, InstanceDatasetTemplate.class, InstanceDatasetTemplateList.class,
+		DoneableInstanceDatasetTemplate.class);
     }
 
     /*

@@ -20,22 +20,11 @@ public class SiteWhereInstanceStatus implements KubernetesResource {
     /** Indicates if an instance configuration has been set */
     private boolean instanceConfigured = false;
 
-    /** Indicates if a web configuration has been set */
-    private boolean webConfigured = false;
-
     public boolean isInstanceConfigured() {
 	return instanceConfigured;
     }
 
     public void setInstanceConfigured(boolean instanceConfigured) {
 	this.instanceConfigured = instanceConfigured;
-    }
-
-    public boolean isWebConfigured() {
-	return webConfigured;
-    }
-
-    public void setWebConfigured(boolean webConfigured) {
-	this.webConfigured = webConfigured;
     }
 }
