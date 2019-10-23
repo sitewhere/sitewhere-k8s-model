@@ -8,9 +8,11 @@
 package io.sitewhere.k8s.crd;
 
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinition;
+import io.fabric8.kubernetes.client.CustomResource;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
+import io.fabric8.kubernetes.internal.KubernetesDeserializer;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
@@ -29,6 +31,7 @@ import io.sitewhere.k8s.crd.tenant.SiteWhereTenantList;
 import io.sitewhere.k8s.crd.tenant.configuration.DoneableTenantConfigurationTemplate;
 import io.sitewhere.k8s.crd.tenant.configuration.TenantConfigurationTemplate;
 import io.sitewhere.k8s.crd.tenant.configuration.TenantConfigurationTemplateList;
+import io.sitewhere.k8s.crd.tenant.dataset.TenantDatasetTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.DoneableSiteWhereTenantEngine;
 import io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngine;
 import io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngineList;
@@ -48,8 +51,32 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
     /** Wrapped client */
     private KubernetesClient client;
 
+    static {
+	register(SiteWhereInstance.class);
+	register(InstanceConfigurationTemplate.class);
+	register(InstanceDatasetTemplate.class);
+	register(SiteWhereMicroservice.class);
+	register(SiteWhereTenant.class);
+	register(TenantConfigurationTemplate.class);
+	register(TenantDatasetTemplate.class);
+	register(SiteWhereTenantEngine.class);
+	register(TenantEngineConfigurationTemplate.class);
+	register(TenantEngineDatasetTemplate.class);
+    }
+
     public SiteWhereKubernetesClient(KubernetesClient client) {
 	this.client = client;
+    }
+
+    /**
+     * Register a custom resource.
+     * 
+     * @param clazz
+     */
+    protected static <C extends CustomResource> void register(Class<C> clazz) {
+	String fullVersion = String.format("%s/%s", ApiConstants.SITEWHERE_API_GROUP,
+		ApiConstants.SITEWHERE_API_VERSION);
+	KubernetesDeserializer.registerCustomKind(fullVersion, clazz.getSimpleName(), clazz);
     }
 
     /*
