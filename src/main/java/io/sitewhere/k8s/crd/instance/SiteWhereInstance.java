@@ -19,10 +19,10 @@ public class SiteWhereInstance extends CustomResource {
     private static final long serialVersionUID = 9047754703679419557L;
 
     /** Instance specification */
-    private SiteWhereInstanceSpec spec;
+    private SiteWhereInstanceSpec spec = new SiteWhereInstanceSpec();
 
     /** Instance status */
-    private SiteWhereInstanceStatus status;
+    private SiteWhereInstanceStatus status = new SiteWhereInstanceStatus();
 
     /*
      * @see io.fabric8.kubernetes.client.CustomResource#getMetadata()

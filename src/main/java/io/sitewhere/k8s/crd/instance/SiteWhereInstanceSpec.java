@@ -27,6 +27,9 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
     /** Instance configuration template name */
     private String configurationTemplate;
 
+    /** Instance dataset template name */
+    private String datasetTemplate;
+
     /** Global instance XML configuration */
     private String configuration;
 
@@ -44,6 +47,14 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
 
     public void setConfigurationTemplate(String configurationTemplate) {
 	this.configurationTemplate = configurationTemplate;
+    }
+
+    public String getDatasetTemplate() {
+	return datasetTemplate;
+    }
+
+    public void setDatasetTemplate(String datasetTemplate) {
+	this.datasetTemplate = datasetTemplate;
     }
 
     public String getConfiguration() {

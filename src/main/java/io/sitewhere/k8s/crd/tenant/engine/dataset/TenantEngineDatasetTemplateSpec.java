@@ -20,4 +20,15 @@ public class TenantEngineDatasetTemplateSpec implements KubernetesResource {
 
     /** Serial version UID */
     private static final long serialVersionUID = 3918181413617089158L;
+
+    /** Template configuration */
+    private String configuration;
+
+    public String getConfiguration() {
+	return configuration;
+    }
+
+    public void setConfiguration(String configuration) {
+	this.configuration = configuration;
+    }
 }

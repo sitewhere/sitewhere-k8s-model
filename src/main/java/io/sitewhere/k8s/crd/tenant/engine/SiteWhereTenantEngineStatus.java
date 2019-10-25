@@ -8,6 +8,7 @@
 package io.sitewhere.k8s.crd.tenant.engine;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+import io.sitewhere.k8s.crd.common.BootstrapState;
 
 /**
  * SiteWhereTenantEngine CRD status.
@@ -16,4 +17,15 @@ public class SiteWhereTenantEngineStatus implements KubernetesResource {
 
     /** Serial version UID */
     private static final long serialVersionUID = 2812411676466723825L;
+
+    /** Indicates if an instance has been bootstrapped */
+    private BootstrapState bootstrapState = BootstrapState.NotBootstrapped;
+
+    public BootstrapState getBootstrapState() {
+	return bootstrapState;
+    }
+
+    public void setBootstrapState(BootstrapState bootstrapState) {
+	this.bootstrapState = bootstrapState;
+    }
 }

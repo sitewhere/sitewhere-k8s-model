@@ -8,6 +8,7 @@
 package io.sitewhere.k8s.crd.instance;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+import io.sitewhere.k8s.crd.common.BootstrapState;
 
 /**
  * SiteWhereInstance CRD status.
@@ -17,14 +18,14 @@ public class SiteWhereInstanceStatus implements KubernetesResource {
     /** Serial version UID */
     private static final long serialVersionUID = 849148365787926189L;
 
-    /** Indicates if an instance configuration has been set */
-    private boolean instanceConfigured = false;
+    /** Indicates if an instance has been bootstrapped */
+    private BootstrapState bootstrapState = BootstrapState.NotBootstrapped;
 
-    public boolean isInstanceConfigured() {
-	return instanceConfigured;
+    public BootstrapState getBootstrapState() {
+	return bootstrapState;
     }
 
-    public void setInstanceConfigured(boolean instanceConfigured) {
-	this.instanceConfigured = instanceConfigured;
+    public void setBootstrapState(BootstrapState bootstrapState) {
+	this.bootstrapState = bootstrapState;
     }
 }

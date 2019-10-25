@@ -19,10 +19,10 @@ public class SiteWhereTenantEngine extends CustomResource {
     private static final long serialVersionUID = 2384776231314254963L;
 
     /** Tenant engine specification */
-    private SiteWhereTenantEngineSpec spec;
+    private SiteWhereTenantEngineSpec spec = new SiteWhereTenantEngineSpec();
 
     /** Tenant engine status */
-    private SiteWhereTenantEngineStatus status;
+    private SiteWhereTenantEngineStatus status = new SiteWhereTenantEngineStatus();
 
     /*
      * @see io.fabric8.kubernetes.client.CustomResource#getMetadata()
