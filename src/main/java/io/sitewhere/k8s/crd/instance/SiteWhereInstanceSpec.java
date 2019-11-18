@@ -8,6 +8,7 @@
 package io.sitewhere.k8s.crd.instance;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
@@ -31,7 +32,7 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
     private String datasetTemplate;
 
     /** Global instance XML configuration */
-    private String configuration;
+    private JsonNode configuration;
 
     public String getInstanceNamespace() {
 	return instanceNamespace;
@@ -57,11 +58,11 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
 	this.datasetTemplate = datasetTemplate;
     }
 
-    public String getConfiguration() {
+    public JsonNode getConfiguration() {
 	return configuration;
     }
 
-    public void setConfiguration(String configuration) {
+    public void setConfiguration(JsonNode configuration) {
 	this.configuration = configuration;
     }
 }
