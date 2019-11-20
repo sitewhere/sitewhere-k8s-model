@@ -10,6 +10,7 @@ package io.sitewhere.k8s.crd.microservice;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
@@ -32,6 +33,9 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 
     /** Parent instance name */
     private String instanceName;
+
+    /** Global instance XML configuration */
+    private JsonNode configuration;
 
     /** Functional area */
     private String functionalArea;
@@ -70,6 +74,14 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 
     public void setInstanceName(String instanceName) {
 	this.instanceName = instanceName;
+    }
+
+    public JsonNode getConfiguration() {
+	return configuration;
+    }
+
+    public void setConfiguration(JsonNode configuration) {
+	this.configuration = configuration;
     }
 
     public String getFunctionalArea() {
