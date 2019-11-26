@@ -13,7 +13,7 @@ ext['fabric8.version'] = '4.6.1'
     
 allprojects {
     group = 'com.sitewhere'
-	version = '0.0.11'
+	version = '0.0.12'
 	
     repositories {
         maven { url "http://repo.maven.apache.org/maven2" }
@@ -34,7 +34,8 @@ allprojects {
     
 	// Library dependencies.
     dependencies {
-		compile group: 'io.fabric8', name: 'kubernetes-client', version: "${rootProject.ext['fabric8.version']}"
+    	compile enforcedPlatform('io.quarkus:quarkus-bom:0.26.1')
+		compile group: 'io.fabric8', name: 'kubernetes-client'
 		
         testCompile group: 'junit', name: 'junit'
     }
@@ -93,7 +94,9 @@ publishing {
     }
 }
 
-apply plugin: 'signing'
-signing {
-    sign publishing.publications.mavenJava
+if (project.hasProperty("signing.keyId")) {
+	apply plugin: 'signing'
+	signing {
+	    sign publishing.publications.mavenJava
+	}
 }

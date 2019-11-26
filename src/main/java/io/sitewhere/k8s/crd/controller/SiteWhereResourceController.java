@@ -132,11 +132,15 @@ public abstract class SiteWhereResourceController<T extends CustomResource> {
 	    LOGGER.debug("Starting event processing loop.");
 	    while (!getInformer().hasSynced()) {
 		try {
+		    LOGGER.debug("Waiting for informer to sync...");
 		    Thread.sleep(200);
 		} catch (InterruptedException e) {
+		    LOGGER.error("Interrupted while waiting for informer to sync.", e);
+		    return;
 		}
 	    }
 
+	    LOGGER.debug("Informer has synchronized.");
 	    while (true) {
 		try {
 		    LOGGER.debug("Waiting on work queue.");
