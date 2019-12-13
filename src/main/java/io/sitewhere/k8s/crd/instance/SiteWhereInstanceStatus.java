@@ -18,14 +18,25 @@ public class SiteWhereInstanceStatus implements KubernetesResource {
     /** Serial version UID */
     private static final long serialVersionUID = 849148365787926189L;
 
-    /** Indicates if an instance has been bootstrapped */
-    private BootstrapState bootstrapState = BootstrapState.NotBootstrapped;
+    /** Indicates if tenant management has been bootstrapped */
+    private BootstrapState tenantManagementBootstrapState = BootstrapState.NotBootstrapped;
 
-    public BootstrapState getBootstrapState() {
-	return bootstrapState;
+    /** Indicates if user management has been bootstrapped */
+    private BootstrapState userManagementBootstrapState = BootstrapState.NotBootstrapped;
+
+    public BootstrapState getTenantManagementBootstrapState() {
+	return tenantManagementBootstrapState;
     }
 
-    public void setBootstrapState(BootstrapState bootstrapState) {
-	this.bootstrapState = bootstrapState;
+    public void setTenantManagementBootstrapState(BootstrapState tenantManagementBootstrapState) {
+	this.tenantManagementBootstrapState = tenantManagementBootstrapState;
+    }
+
+    public BootstrapState getUserManagementBootstrapState() {
+	return userManagementBootstrapState;
+    }
+
+    public void setUserManagementBootstrapState(BootstrapState userManagementBootstrapState) {
+	this.userManagementBootstrapState = userManagementBootstrapState;
     }
 }

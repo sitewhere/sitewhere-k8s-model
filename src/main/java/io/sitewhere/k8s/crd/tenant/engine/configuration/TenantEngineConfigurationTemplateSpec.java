@@ -8,6 +8,7 @@
 package io.sitewhere.k8s.crd.tenant.engine.configuration;
 
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
@@ -22,13 +23,13 @@ public class TenantEngineConfigurationTemplateSpec implements KubernetesResource
     private static final long serialVersionUID = -669286121084379993L;
 
     /** Configuration content */
-    private String configuration;
+    private JsonNode configuration;
 
-    public String getConfiguration() {
+    public JsonNode getConfiguration() {
 	return configuration;
     }
 
-    public void setConfiguration(String configuration) {
+    public void setConfiguration(JsonNode configuration) {
 	this.configuration = configuration;
     }
 }
