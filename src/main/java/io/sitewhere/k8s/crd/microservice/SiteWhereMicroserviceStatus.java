@@ -7,11 +7,15 @@
  */
 package io.sitewhere.k8s.crd.microservice;
 
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import io.fabric8.kubernetes.api.model.KubernetesResource;
 
 /**
  * SiteWhereMicroservice CRD status.
  */
+@JsonDeserialize(using = JsonDeserializer.None.class)
 public class SiteWhereMicroserviceStatus implements KubernetesResource {
 
     /** Serial version UID */

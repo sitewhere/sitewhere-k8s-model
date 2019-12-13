@@ -7,12 +7,16 @@
  */
 package io.sitewhere.k8s.crd.instance;
 
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import io.fabric8.kubernetes.api.model.KubernetesResource;
 import io.sitewhere.k8s.crd.common.BootstrapState;
 
 /**
  * SiteWhereInstance CRD status.
  */
+@JsonDeserialize(using = JsonDeserializer.None.class)
 public class SiteWhereInstanceStatus implements KubernetesResource {
 
     /** Serial version UID */
