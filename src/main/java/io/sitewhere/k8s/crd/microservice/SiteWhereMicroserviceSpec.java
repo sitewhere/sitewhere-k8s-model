@@ -25,7 +25,7 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Serial version UID */
     private static final long serialVersionUID = -4468391827753999167L;
 
-    /** Pod annotations */
+    /** Microservice annotations */
     private Map<String, String> annotations;
 
     /** Number of replicas */
@@ -39,6 +39,9 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 
     /** Functional area */
     private String functionalArea;
+
+    /** Indicates whether microservice has tenant engines */
+    private boolean multitenant = false;
 
     /** Helm information */
     private ComponentHelmSpec helm;
@@ -90,6 +93,14 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 
     public void setFunctionalArea(String functionalArea) {
 	this.functionalArea = functionalArea;
+    }
+
+    public boolean isMultitenant() {
+	return multitenant;
+    }
+
+    public void setMultitenant(boolean multitenant) {
+	this.multitenant = multitenant;
     }
 
     public ComponentHelmSpec getHelm() {

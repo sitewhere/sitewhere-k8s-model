@@ -31,4 +31,9 @@ public class ResourceContexts {
     public static final CustomResourceDefinitionContext TENANT_CONTEXT = new CustomResourceDefinitionContext.Builder()
 	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_API_GROUP)
 	    .withPlural(ApiConstants.SITEWHERE_TENANT_CRD_PLURAL).withScope(SCOPE_NAMESPACED).build();
+
+    /** Context used for accessing tenant engines */
+    public static final CustomResourceDefinitionContext TENANT_ENGINE_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_TENANT_ENGINE_CRD_PLURAL).withScope(SCOPE_NAMESPACED).build();
 }
