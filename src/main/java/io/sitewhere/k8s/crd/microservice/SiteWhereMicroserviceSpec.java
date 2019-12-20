@@ -31,14 +31,8 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Number of replicas */
     private int replicas = 1;
 
-    /** Parent instance name */
-    private String instanceName;
-
     /** Global instance XML configuration */
     private JsonNode configuration;
-
-    /** Functional area */
-    private String functionalArea;
 
     /** Indicates whether microservice has tenant engines */
     private boolean multitenant = false;
@@ -71,28 +65,12 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.replicas = replicas;
     }
 
-    public String getInstanceName() {
-	return instanceName;
-    }
-
-    public void setInstanceName(String instanceName) {
-	this.instanceName = instanceName;
-    }
-
     public JsonNode getConfiguration() {
 	return configuration;
     }
 
     public void setConfiguration(JsonNode configuration) {
 	this.configuration = configuration;
-    }
-
-    public String getFunctionalArea() {
-	return functionalArea;
-    }
-
-    public void setFunctionalArea(String functionalArea) {
-	this.functionalArea = functionalArea;
     }
 
     public boolean isMultitenant() {
