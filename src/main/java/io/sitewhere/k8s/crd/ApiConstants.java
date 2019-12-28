@@ -39,6 +39,9 @@ public class ApiConstants {
     /** TenantConfigurationTemplate CRD plural */
     public static final String SITEWHERE_TCT_CRD_PLURAL = "tenantconfigurations";
 
+    /** TenantDatasetTemplate CRD plural */
+    public static final String SITEWHERE_TDT_CRD_PLURAL = "tenantdatasets";
+
     /** SiteWhereTenantEngine CRD plural */
     public static final String SITEWHERE_TENANT_ENGINE_CRD_PLURAL = "tenantengines";
 
@@ -66,6 +69,9 @@ public class ApiConstants {
 
     /** TenantConfigurationTemplate CRD name */
     public static final String SITEWHERE_TCT_CRD_NAME = SITEWHERE_TCT_CRD_PLURAL + "." + SITEWHERE_TEMPLATES_API_GROUP;
+
+    /** TenantDatasetTemplate CRD name */
+    public static final String SITEWHERE_TDT_CRD_NAME = SITEWHERE_TDT_CRD_PLURAL + "." + SITEWHERE_TEMPLATES_API_GROUP;
 
     /** SiteWhereTenantEngine CRD name */
     public static final String SITEWHERE_TENANT_ENGINE_CRD_NAME = SITEWHERE_TENANT_ENGINE_CRD_PLURAL + "."
