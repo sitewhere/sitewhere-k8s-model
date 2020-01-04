@@ -7,11 +7,15 @@
  */
 package io.sitewhere.k8s.crd.tenant;
 
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import io.fabric8.kubernetes.api.model.KubernetesResource;
 
 /**
  * SiteWhereTenant CRD status.
  */
+@JsonDeserialize(using = JsonDeserializer.None.class)
 public class SiteWhereTenantStatus implements KubernetesResource {
 
     /** Serial version UID */
