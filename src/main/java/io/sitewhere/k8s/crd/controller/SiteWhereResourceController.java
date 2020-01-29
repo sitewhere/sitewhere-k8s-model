@@ -64,15 +64,28 @@ public abstract class SiteWhereResourceController<T extends CustomResource> {
     protected void startEventHandling() {
 	LOGGER.debug("Starting event handler for resource updates.");
 	getInformer().addEventHandler(new ResourceEventHandler<T>() {
+
+	    /*
+	     * @see
+	     * io.fabric8.kubernetes.client.informers.ResourceEventHandler#onAdd(java.lang.
+	     * Object)
+	     */
 	    @Override
 	    public void onAdd(T resource) {
 		String key = Cache.metaNamespaceKeyFunc(resource);
 		if (key != null && !key.isEmpty()) {
 		    LOGGER.debug(String.format("Add with key %s for %s", key, resource.getMetadata().getName()));
 		    getWorkQueue().add(new ResourceChange<T>(ResourceChangeType.CREATE, key, resource));
+		} else {
+		    LOGGER.warn("Skipping empty key on add for resource controller.");
 		}
 	    }
 
+	    /*
+	     * @see
+	     * io.fabric8.kubernetes.client.informers.ResourceEventHandler#onUpdate(java.
+	     * lang.Object, java.lang.Object)
+	     */
 	    @Override
 	    public void onUpdate(T oldResource, T newResource) {
 		if (oldResource.getMetadata().getResourceVersion() == newResource.getMetadata().getResourceVersion()) {
@@ -82,15 +95,24 @@ public abstract class SiteWhereResourceController<T extends CustomResource> {
 		if (key != null && !key.isEmpty()) {
 		    LOGGER.debug(String.format("Update with key %s for %s", key, newResource.getMetadata().getName()));
 		    getWorkQueue().add(new ResourceChange<T>(ResourceChangeType.UPDATE, key, newResource));
+		} else {
+		    LOGGER.warn("Skipping empty key on update for resource controller.");
 		}
 	    }
 
+	    /*
+	     * @see
+	     * io.fabric8.kubernetes.client.informers.ResourceEventHandler#onDelete(java.
+	     * lang.Object, boolean)
+	     */
 	    @Override
 	    public void onDelete(T resource, boolean b) {
 		String key = Cache.metaNamespaceKeyFunc(resource);
 		if (key != null && !key.isEmpty()) {
 		    LOGGER.debug(String.format("Delete with key %s for %s", key, resource.getMetadata().getName()));
 		    getWorkQueue().add(new ResourceChange<T>(ResourceChangeType.DELETE, key, resource));
+		} else {
+		    LOGGER.warn("Skipping empty key on delete for resource controller.");
 		}
 	    }
 	});
