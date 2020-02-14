@@ -27,6 +27,9 @@ public class ResourceLabels {
     /** Label for SiteWhere functional area name */
     public static final String LABEL_SITEWHERE_FUNCTIONAL_AREA = "sitewhere.io/functional-area";
 
+    /** Label for script identifier */
+    public static final String LABEL_SCRIPTING_SCRIPT_ID = "scripting.sitewhere.io/script-id";
+
     /** Label for Kubernetes name */
     public static final String LABEL_K8S_NAME = "app.kubernetes.io/name";
 

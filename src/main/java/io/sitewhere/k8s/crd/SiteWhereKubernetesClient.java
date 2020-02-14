@@ -43,6 +43,15 @@ import io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfiguratio
 import io.sitewhere.k8s.crd.tenant.engine.dataset.DoneableTenantEngineDatasetTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateList;
+import io.sitewhere.k8s.crd.tenant.scripting.DoneableSiteWhereScript;
+import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScript;
+import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptList;
+import io.sitewhere.k8s.crd.tenant.scripting.template.DoneableSiteWhereScriptTemplate;
+import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplate;
+import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateList;
+import io.sitewhere.k8s.crd.tenant.scripting.version.DoneableSiteWhereScriptVersion;
+import io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersion;
+import io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersionList;
 
 /**
  * Adds interactions with SiteWhere-specific resource to fabric8 k8s Java
@@ -64,6 +73,9 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	register(SiteWhereTenantEngine.class);
 	register(TenantEngineConfigurationTemplate.class);
 	register(TenantEngineDatasetTemplate.class);
+	register(SiteWhereScriptTemplate.class);
+	register(SiteWhereScript.class);
+	register(SiteWhereScriptVersion.class);
     }
 
     public SiteWhereKubernetesClient(KubernetesClient client) {
@@ -225,6 +237,50 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	}
 	return getClient().customResources(crd, TenantEngineDatasetTemplate.class,
 		TenantEngineDatasetTemplateList.class, DoneableTenantEngineDatasetTemplate.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getScriptTemplates()
+     */
+    @Override
+    public MixedOperation<SiteWhereScriptTemplate, SiteWhereScriptTemplateList, DoneableSiteWhereScriptTemplate, Resource<SiteWhereScriptTemplate, DoneableSiteWhereScriptTemplate>> getScriptTemplates() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_SCRIPT_TEMPLATE_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_TEMPLATE_CRD_NAME));
+	}
+	return getClient().customResources(crd, SiteWhereScriptTemplate.class, SiteWhereScriptTemplateList.class,
+		DoneableSiteWhereScriptTemplate.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getScripts()
+     */
+    @Override
+    public MixedOperation<SiteWhereScript, SiteWhereScriptList, DoneableSiteWhereScript, Resource<SiteWhereScript, DoneableSiteWhereScript>> getScripts() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_SCRIPT_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_CRD_NAME));
+	}
+	return getClient().customResources(crd, SiteWhereScript.class, SiteWhereScriptList.class,
+		DoneableSiteWhereScript.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getScriptsVersions()
+     */
+    @Override
+    public MixedOperation<SiteWhereScriptVersion, SiteWhereScriptVersionList, DoneableSiteWhereScriptVersion, Resource<SiteWhereScriptVersion, DoneableSiteWhereScriptVersion>> getScriptsVersions() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_SCRIPT_VERSION_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_VERSION_CRD_NAME));
+	}
+	return getClient().customResources(crd, SiteWhereScriptVersion.class, SiteWhereScriptVersionList.class,
+		DoneableSiteWhereScriptVersion.class);
     }
 
     protected KubernetesClient getClient() {

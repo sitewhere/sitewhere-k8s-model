@@ -15,11 +15,14 @@ public class ApiConstants {
     /** SiteWhere CRD API version */
     public static final String SITEWHERE_API_VERSION = "v1alpha3";
 
-    /** SiteWhere CRD group */
+    /** SiteWhere API group */
     public static final String SITEWHERE_API_GROUP = "sitewhere.io";
 
-    /** SiteWhere templates CRD group */
+    /** SiteWhere templates API group */
     public static final String SITEWHERE_TEMPLATES_API_GROUP = "templates.sitewhere.io";
+
+    /** SiteWhere scripting API group */
+    public static final String SITEWHERE_SCRIPTING_API_GROUP = "scripting.sitewhere.io";
 
     /** SiteWhereInstance CRD plural */
     public static final String SITEWHERE_INSTANCE_CRD_PLURAL = "instances";
@@ -50,6 +53,15 @@ public class ApiConstants {
 
     /** TenantEngineDatasetTemplate CRD plural */
     public static final String SITEWHERE_TEDT_CRD_PLURAL = "tenantenginedatasets";
+
+    /** SiteWhereScriptTemplate CRD plural */
+    public static final String SITEWHERE_SCRIPT_TEMPLATE_CRD_PLURAL = "scripttemplates";
+
+    /** SiteWhereScript CRD plural */
+    public static final String SITEWHERE_SCRIPT_CRD_PLURAL = "scripts";
+
+    /** SiteWhereScriptVersion CRD plural */
+    public static final String SITEWHERE_SCRIPT_VERSION_CRD_PLURAL = "scriptversions";
 
     /** SiteWhereInstance CRD name */
     public static final String SITEWHERE_INSTANCE_CRD_NAME = SITEWHERE_INSTANCE_CRD_PLURAL + "." + SITEWHERE_API_GROUP;
@@ -84,4 +96,16 @@ public class ApiConstants {
     /** TenantEngineDatasetTemplate CRD name */
     public static final String SITEWHERE_TEDT_CRD_NAME = SITEWHERE_TEDT_CRD_PLURAL + "."
 	    + SITEWHERE_TEMPLATES_API_GROUP;
+
+    /** SiteWhereScriptTemplate CRD name */
+    public static final String SITEWHERE_SCRIPT_TEMPLATE_CRD_NAME = SITEWHERE_SCRIPT_TEMPLATE_CRD_PLURAL + "."
+	    + SITEWHERE_SCRIPTING_API_GROUP;
+
+    /** SiteWhereScript CRD name */
+    public static final String SITEWHERE_SCRIPT_CRD_NAME = SITEWHERE_SCRIPT_CRD_PLURAL + "."
+	    + SITEWHERE_SCRIPTING_API_GROUP;
+
+    /** SiteWhereScriptVersion CRD name */
+    public static final String SITEWHERE_SCRIPT_VERSION_CRD_NAME = SITEWHERE_SCRIPT_VERSION_CRD_PLURAL + "."
+	    + SITEWHERE_SCRIPTING_API_GROUP;
 }

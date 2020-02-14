@@ -39,6 +39,15 @@ import io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfiguratio
 import io.sitewhere.k8s.crd.tenant.engine.dataset.DoneableTenantEngineDatasetTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateList;
+import io.sitewhere.k8s.crd.tenant.scripting.DoneableSiteWhereScript;
+import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScript;
+import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptList;
+import io.sitewhere.k8s.crd.tenant.scripting.template.DoneableSiteWhereScriptTemplate;
+import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplate;
+import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateList;
+import io.sitewhere.k8s.crd.tenant.scripting.version.DoneableSiteWhereScriptVersion;
+import io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersion;
+import io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersionList;
 
 /**
  * API for interacting with SiteWhere resources via the fabric8 k8s client.
@@ -115,4 +124,25 @@ public interface ISiteWhereKubernetesClient {
      * @return
      */
     MixedOperation<TenantEngineDatasetTemplate, TenantEngineDatasetTemplateList, DoneableTenantEngineDatasetTemplate, Resource<TenantEngineDatasetTemplate, DoneableTenantEngineDatasetTemplate>> getTenantEngineDatasetTemplates();
+
+    /**
+     * Gets context for operating on SiteWhere script templates.
+     * 
+     * @return
+     */
+    MixedOperation<SiteWhereScriptTemplate, SiteWhereScriptTemplateList, DoneableSiteWhereScriptTemplate, Resource<SiteWhereScriptTemplate, DoneableSiteWhereScriptTemplate>> getScriptTemplates();
+
+    /**
+     * Gets context for operating on SiteWhere scripts.
+     * 
+     * @return
+     */
+    MixedOperation<SiteWhereScript, SiteWhereScriptList, DoneableSiteWhereScript, Resource<SiteWhereScript, DoneableSiteWhereScript>> getScripts();
+
+    /**
+     * Gets context for operating on SiteWhere script versions.
+     * 
+     * @return
+     */
+    MixedOperation<SiteWhereScriptVersion, SiteWhereScriptVersionList, DoneableSiteWhereScriptVersion, Resource<SiteWhereScriptVersion, DoneableSiteWhereScriptVersion>> getScriptsVersions();
 }
