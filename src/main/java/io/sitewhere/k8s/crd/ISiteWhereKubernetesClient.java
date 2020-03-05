@@ -7,8 +7,11 @@
  */
 package io.sitewhere.k8s.crd;
 
+import java.util.Map;
+
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
+import io.sitewhere.k8s.crd.exception.SiteWhereK8sException;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
@@ -145,4 +148,94 @@ public interface ISiteWhereKubernetesClient {
      * @return
      */
     MixedOperation<SiteWhereScriptVersion, SiteWhereScriptVersionList, DoneableSiteWhereScriptVersion, Resource<SiteWhereScriptVersion, DoneableSiteWhereScriptVersion>> getScriptsVersions();
+
+    /**
+     * Get functional area for a microservice.
+     * 
+     * @param microservice
+     * @return
+     */
+    String getFunctionalArea(SiteWhereMicroservice microservice);
+
+    /**
+     * Get all microservices in the given namespace.
+     * 
+     * @param namespace
+     * @return
+     */
+    SiteWhereMicroserviceList getAllMicroservices(String namespace);
+
+    /**
+     * Get microservice corresponding to identifier. Returns null if none is found.
+     * 
+     * @param namespace
+     * @param identifier
+     * @return
+     */
+    SiteWhereMicroservice getMicroserviceForIdentifier(String namespace, String identifier);
+
+    /**
+     * Get all tenants in the given namespace.
+     * 
+     * @param namespace
+     * @return
+     */
+    SiteWhereTenantList getAllTenants(String namespace);
+
+    /**
+     * Get tenant corresponding to token. Returns null if none is found.
+     * 
+     * @param namespace
+     * @param token
+     * @return
+     */
+    SiteWhereTenant getTenantForToken(String namespace, String token);
+
+    /**
+     * Get map of tenant engines for a tenant (indexed by microservice name).
+     * 
+     * @param tenant
+     * @return
+     */
+    Map<String, SiteWhereTenantEngine> getTenantEnginesForTenantByMicroservice(SiteWhereTenant tenant);
+
+    /**
+     * Get map of tenant engines for a microservice (indexed by tenant id).
+     * 
+     * @param microservice
+     * @return
+     */
+    Map<String, SiteWhereTenantEngine> getTenantEnginesForMicroserviceByTenant(SiteWhereMicroservice microservice);
+
+    /**
+     * Locate tenant engine configuration template based on tenant configuration
+     * template associated with tenant.
+     * 
+     * @param tenant
+     * @param microservice
+     * @return
+     * @throws SiteWhereK8sException
+     */
+    TenantEngineConfigurationTemplate getTenantEngineConfigurationTemplate(SiteWhereTenant tenant,
+	    SiteWhereMicroservice microservice) throws SiteWhereK8sException;
+
+    /**
+     * Get a tenant engine that corresponds to the given microservice and tenant.
+     * 
+     * @param microservice
+     * @param tenant
+     * @return
+     * @throws SiteWhereK8sException
+     */
+    SiteWhereTenantEngine getTenantEngine(SiteWhereMicroservice microservice, SiteWhereTenant tenant)
+	    throws SiteWhereK8sException;
+
+    /**
+     * Create a new tenant engine for a tenant/microservice combination.
+     * 
+     * @param tenant
+     * @param microservice
+     * @throws SiteWhereK8sException
+     */
+    void createNewTenantEngine(SiteWhereTenant tenant, SiteWhereMicroservice microservice) throws SiteWhereK8sException;
 }

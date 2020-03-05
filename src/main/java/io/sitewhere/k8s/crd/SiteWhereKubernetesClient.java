@@ -7,12 +7,18 @@
  */
 package io.sitewhere.k8s.crd;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.google.common.base.CaseFormat;
+
 import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinition;
 import io.fabric8.kubernetes.client.CustomResource;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.kubernetes.internal.KubernetesDeserializer;
+import io.sitewhere.k8s.crd.exception.SiteWhereK8sException;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
@@ -37,6 +43,7 @@ import io.sitewhere.k8s.crd.tenant.dataset.TenantDatasetTemplateList;
 import io.sitewhere.k8s.crd.tenant.engine.DoneableSiteWhereTenantEngine;
 import io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngine;
 import io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngineList;
+import io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngineSpec;
 import io.sitewhere.k8s.crd.tenant.engine.configuration.DoneableTenantEngineConfigurationTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfigurationTemplate;
 import io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfigurationTemplateList;
@@ -281,6 +288,195 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	}
 	return getClient().customResources(crd, SiteWhereScriptVersion.class, SiteWhereScriptVersionList.class,
 		DoneableSiteWhereScriptVersion.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getFunctionalArea(io.
+     * sitewhere.k8s.crd.microservice.SiteWhereMicroservice)
+     */
+    @Override
+    public String getFunctionalArea(SiteWhereMicroservice microservice) {
+	String functionalArea = microservice.getMetadata().getLabels()
+		.get(ResourceLabels.LABEL_SITEWHERE_FUNCTIONAL_AREA);
+	if (functionalArea == null) {
+	    throw new RuntimeException(String.format("Microservice '%s' does not have a functional area label.",
+		    microservice.getMetadata().getName()));
+	}
+	return functionalArea;
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getAllMicroservices(java.lang
+     * .String)
+     */
+    @Override
+    public SiteWhereMicroserviceList getAllMicroservices(String namespace) {
+	return getMicroservices().inNamespace(namespace).list();
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getMicroserviceForIdentifier(
+     * java.lang.String, java.lang.String)
+     */
+    @Override
+    public SiteWhereMicroservice getMicroserviceForIdentifier(String namespace, String identifier) {
+	SiteWhereMicroserviceList list = getAllMicroservices(namespace);
+	for (SiteWhereMicroservice microservice : list.getItems()) {
+	    if (getFunctionalArea(microservice).equals(identifier)) {
+		return microservice;
+	    }
+	}
+	return null;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getAllTenants(java.lang.
+     * String)
+     */
+    @Override
+    public SiteWhereTenantList getAllTenants(String namespace) {
+	return getTenants().inNamespace(namespace).list();
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getTenantForToken(java.lang.
+     * String, java.lang.String)
+     */
+    @Override
+    public SiteWhereTenant getTenantForToken(String namespace, String token) {
+	SiteWhereTenantList list = getAllTenants(namespace);
+	for (SiteWhereTenant tenant : list.getItems()) {
+	    if (tenant.getMetadata().getName().equals(token)) {
+		return tenant;
+	    }
+	}
+	return null;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#
+     * getTenantEnginesForTenantByMicroservice(io.sitewhere.k8s.crd.tenant.
+     * SiteWhereTenant)
+     */
+    @Override
+    public Map<String, SiteWhereTenantEngine> getTenantEnginesForTenantByMicroservice(SiteWhereTenant tenant) {
+	SiteWhereTenantEngineList list = getTenantEngines().inNamespace(tenant.getMetadata().getNamespace())
+		.withLabel(ResourceLabels.LABEL_SITEWHERE_TENANT, tenant.getMetadata().getName()).list();
+	Map<String, SiteWhereTenantEngine> byMicroservice = new HashMap<>();
+	for (SiteWhereTenantEngine engine : list.getItems()) {
+	    String microservice = engine.getMetadata().getLabels().get(ResourceLabels.LABEL_SITEWHERE_MICROSERVICE);
+	    if (microservice != null) {
+		byMicroservice.put(microservice, engine);
+	    }
+	}
+	return byMicroservice;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#
+     * getTenantEnginesForMicroserviceByTenant(io.sitewhere.k8s.crd.microservice.
+     * SiteWhereMicroservice)
+     */
+    @Override
+    public Map<String, SiteWhereTenantEngine> getTenantEnginesForMicroserviceByTenant(
+	    SiteWhereMicroservice microservice) {
+	SiteWhereTenantEngineList list = getTenantEngines().inNamespace(microservice.getMetadata().getNamespace())
+		.withLabel(ResourceLabels.LABEL_SITEWHERE_MICROSERVICE, microservice.getMetadata().getName()).list();
+	Map<String, SiteWhereTenantEngine> byMicroservice = new HashMap<>();
+	for (SiteWhereTenantEngine engine : list.getItems()) {
+	    String tenantId = engine.getMetadata().getLabels().get(ResourceLabels.LABEL_SITEWHERE_TENANT);
+	    if (tenantId != null) {
+		byMicroservice.put(tenantId, engine);
+	    }
+	}
+	return byMicroservice;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#
+     * getTenantEngineConfigurationTemplate(io.sitewhere.k8s.crd.tenant.
+     * SiteWhereTenant, io.sitewhere.k8s.crd.microservice.SiteWhereMicroservice)
+     */
+    @Override
+    public TenantEngineConfigurationTemplate getTenantEngineConfigurationTemplate(SiteWhereTenant tenant,
+	    SiteWhereMicroservice microservice) throws SiteWhereK8sException {
+	TenantConfigurationTemplate tenantTemplate = getTenantConfigurationTemplates()
+		.withName(tenant.getSpec().getConfigurationTemplate()).get();
+	if (tenantTemplate == null) {
+	    String message = String.format("Tenant references non-existent configuration template '%s'.",
+		    tenant.getSpec().getConfigurationTemplate());
+	    throw new SiteWhereK8sException(message);
+	}
+	String functionalArea = getFunctionalArea(microservice);
+	String target = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, functionalArea);
+	String tecTemplateName = tenantTemplate.getSpec().getTenantEngineTemplates().get(target);
+	if (tecTemplateName == null) {
+	    return null;
+	}
+
+	return getTenantEngineConfigurationTemplates().withName(tecTemplateName).get();
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getTenantEngine(io.sitewhere.
+     * k8s.crd.microservice.SiteWhereMicroservice,
+     * io.sitewhere.k8s.crd.tenant.SiteWhereTenant)
+     */
+    @Override
+    public SiteWhereTenantEngine getTenantEngine(SiteWhereMicroservice microservice, SiteWhereTenant tenant)
+	    throws SiteWhereK8sException {
+	Map<String, String> labels = new HashMap<>();
+	labels.put(ResourceLabels.LABEL_SITEWHERE_TENANT, tenant.getMetadata().getName());
+	labels.put(ResourceLabels.LABEL_SITEWHERE_MICROSERVICE, microservice.getMetadata().getName());
+	SiteWhereTenantEngineList list = getTenantEngines().inNamespace(microservice.getMetadata().getNamespace())
+		.withLabels(labels).list();
+	if (list.getItems().size() == 0) {
+	    return null;
+	} else if (list.getItems().size() == 1) {
+	    return list.getItems().get(0);
+	}
+	throw new SiteWhereK8sException("Multiple tenant engines found for microservice/tenant combination.");
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#createNewTenantEngine(io.
+     * sitewhere.k8s.crd.tenant.SiteWhereTenant,
+     * io.sitewhere.k8s.crd.microservice.SiteWhereMicroservice)
+     */
+    @Override
+    public void createNewTenantEngine(SiteWhereTenant tenant, SiteWhereMicroservice microservice)
+	    throws SiteWhereK8sException {
+	SiteWhereTenantEngine engine = new SiteWhereTenantEngine();
+	String tenantEngineName = String.format("%s-%s-%s", tenant.getMetadata().getName(),
+		microservice.getMetadata().getName(), String.valueOf(System.currentTimeMillis()));
+	engine.getMetadata().setName(tenantEngineName);
+	engine.getMetadata().setNamespace(tenant.getMetadata().getNamespace());
+
+	Map<String, String> labels = new HashMap<>();
+	String functionalArea = getFunctionalArea(microservice);
+	labels.put(ResourceLabels.LABEL_SITEWHERE_TENANT, tenant.getMetadata().getName());
+	labels.put(ResourceLabels.LABEL_SITEWHERE_MICROSERVICE, microservice.getMetadata().getName());
+	labels.put(ResourceLabels.LABEL_SITEWHERE_FUNCTIONAL_AREA, functionalArea);
+	engine.getMetadata().setLabels(labels);
+
+	// Look up tenant configuration template for tenant/microservice combination.
+	TenantEngineConfigurationTemplate tecTemplate = getTenantEngineConfigurationTemplate(tenant, microservice);
+	if (tecTemplate == null) {
+	    throw new SiteWhereK8sException(
+		    String.format("Unable to resolve default tenant engine configuration for '%s'.", functionalArea));
+	}
+
+	// Copy template configuration into spec.
+	SiteWhereTenantEngineSpec spec = new SiteWhereTenantEngineSpec();
+	spec.setConfiguration(tecTemplate.getSpec().getConfiguration());
+	engine.setSpec(spec);
+
+	getTenantEngines().withName(tenantEngineName).createOrReplace(engine);
     }
 
     protected KubernetesClient getClient() {

@@ -11,7 +11,7 @@ apply plugin: 'distribution'
     
 allprojects {
     group = 'com.sitewhere'
-	version = '3.0.0.alpha1'
+	version = '3.0.0.alpha2'
 	
     repositories {
         maven { url "https://repo.maven.apache.org/maven2" }
@@ -32,10 +32,13 @@ allprojects {
     
 	// Library dependencies.
     dependencies {
-    	compile platform('io.quarkus:quarkus-bom:1.2.0.Final')
+    	compile platform('io.quarkus:quarkus-bom:1.2.1.Final')
     	
     	// Force latest version of k8s client.
 		compile group: 'io.fabric8', name: 'kubernetes-client', version: '4.7.1'
+	
+		// Used for helper functions.
+		compile group: 'com.google.guava', name: 'guava'
 		
         testCompile group: 'junit', name: 'junit'
     }

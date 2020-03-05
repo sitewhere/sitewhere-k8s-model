@@ -7,8 +7,6 @@
  */
 package io.sitewhere.k8s.crd.microservice;
 
-import java.util.Map;
-
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -25,8 +23,14 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Serial version UID */
     private static final long serialVersionUID = -4468391827753999167L;
 
-    /** Microservice annotations */
-    private Map<String, String> annotations;
+    /** Name displayed for microservice */
+    private String name;
+
+    /** Microservice description */
+    private String description;
+
+    /** Icon displayed for microservice */
+    private String icon;
 
     /** Number of replicas */
     private int replicas = 1;
@@ -49,12 +53,28 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Debug specification */
     private MicroserviceDebugSpecification debug;
 
-    public Map<String, String> getAnnotations() {
-	return annotations;
+    public String getName() {
+	return name;
     }
 
-    public void setAnnotations(Map<String, String> annotations) {
-	this.annotations = annotations;
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    public String getDescription() {
+	return description;
+    }
+
+    public void setDescription(String description) {
+	this.description = description;
+    }
+
+    public String getIcon() {
+	return icon;
+    }
+
+    public void setIcon(String icon) {
+	this.icon = icon;
     }
 
     public int getReplicas() {
