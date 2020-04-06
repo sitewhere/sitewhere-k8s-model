@@ -36,4 +36,14 @@ public class ResourceContexts {
     public static final CustomResourceDefinitionContext TENANT_ENGINE_CONTEXT = new CustomResourceDefinitionContext.Builder()
 	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_API_GROUP)
 	    .withPlural(ApiConstants.SITEWHERE_TENANT_ENGINE_CRD_PLURAL).withScope(SCOPE_NAMESPACED).build();
+
+    /** Context used for accessing scripts */
+    public static final CustomResourceDefinitionContext SCRIPT_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_SCRIPTING_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_SCRIPT_CRD_PLURAL).withScope(SCOPE_NAMESPACED).build();
+
+    /** Context used for accessing script versions */
+    public static final CustomResourceDefinitionContext SCRIPT_VERSION_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_SCRIPTING_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_SCRIPT_VERSION_CRD_PLURAL).withScope(SCOPE_NAMESPACED).build();
 }

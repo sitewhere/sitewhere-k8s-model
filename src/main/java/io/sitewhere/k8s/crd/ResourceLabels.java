@@ -30,6 +30,9 @@ public class ResourceLabels {
     /** Label for script identifier */
     public static final String LABEL_SCRIPTING_SCRIPT_ID = "scripting.sitewhere.io/script-id";
 
+    /** Label for script category */
+    public static final String LABEL_SCRIPTING_SCRIPT_CATEGORY = "scripting.sitewhere.io/category";
+
     /** Label for Kubernetes name */
     public static final String LABEL_K8S_NAME = "app.kubernetes.io/name";
 

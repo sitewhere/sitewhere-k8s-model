@@ -45,6 +45,9 @@ import io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateLis
 import io.sitewhere.k8s.crd.tenant.scripting.DoneableSiteWhereScript;
 import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScript;
 import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptList;
+import io.sitewhere.k8s.crd.tenant.scripting.category.DoneableSiteWhereScriptCategory;
+import io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategory;
+import io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategoryList;
 import io.sitewhere.k8s.crd.tenant.scripting.template.DoneableSiteWhereScriptTemplate;
 import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplate;
 import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateList;
@@ -127,6 +130,13 @@ public interface ISiteWhereKubernetesClient {
      * @return
      */
     MixedOperation<TenantEngineDatasetTemplate, TenantEngineDatasetTemplateList, DoneableTenantEngineDatasetTemplate, Resource<TenantEngineDatasetTemplate, DoneableTenantEngineDatasetTemplate>> getTenantEngineDatasetTemplates();
+
+    /**
+     * Gets context for operating on SiteWhere script categories.
+     * 
+     * @return
+     */
+    MixedOperation<SiteWhereScriptCategory, SiteWhereScriptCategoryList, DoneableSiteWhereScriptCategory, Resource<SiteWhereScriptCategory, DoneableSiteWhereScriptCategory>> getScriptCategories();
 
     /**
      * Gets context for operating on SiteWhere script templates.

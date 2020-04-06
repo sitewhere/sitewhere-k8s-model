@@ -53,6 +53,9 @@ import io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateLis
 import io.sitewhere.k8s.crd.tenant.scripting.DoneableSiteWhereScript;
 import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScript;
 import io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptList;
+import io.sitewhere.k8s.crd.tenant.scripting.category.DoneableSiteWhereScriptCategory;
+import io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategory;
+import io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategoryList;
 import io.sitewhere.k8s.crd.tenant.scripting.template.DoneableSiteWhereScriptTemplate;
 import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplate;
 import io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateList;
@@ -244,6 +247,21 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	}
 	return getClient().customResources(crd, TenantEngineDatasetTemplate.class,
 		TenantEngineDatasetTemplateList.class, DoneableTenantEngineDatasetTemplate.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getScriptCategories()
+     */
+    @Override
+    public MixedOperation<SiteWhereScriptCategory, SiteWhereScriptCategoryList, DoneableSiteWhereScriptCategory, Resource<SiteWhereScriptCategory, DoneableSiteWhereScriptCategory>> getScriptCategories() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_SCRIPT_CATEGORY_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_CATEGORY_CRD_NAME));
+	}
+	return getClient().customResources(crd, SiteWhereScriptCategory.class, SiteWhereScriptCategoryList.class,
+		DoneableSiteWhereScriptCategory.class);
     }
 
     /*

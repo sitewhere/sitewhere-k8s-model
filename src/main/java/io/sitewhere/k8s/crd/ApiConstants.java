@@ -54,6 +54,9 @@ public class ApiConstants {
     /** TenantEngineDatasetTemplate CRD plural */
     public static final String SITEWHERE_TEDT_CRD_PLURAL = "tenantenginedatasets";
 
+    /** SiteWhereScriptCategory CRD plural */
+    public static final String SITEWHERE_SCRIPT_CATEGORY_CRD_PLURAL = "scriptcategories";
+
     /** SiteWhereScriptTemplate CRD plural */
     public static final String SITEWHERE_SCRIPT_TEMPLATE_CRD_PLURAL = "scripttemplates";
 
@@ -96,6 +99,10 @@ public class ApiConstants {
     /** TenantEngineDatasetTemplate CRD name */
     public static final String SITEWHERE_TEDT_CRD_NAME = SITEWHERE_TEDT_CRD_PLURAL + "."
 	    + SITEWHERE_TEMPLATES_API_GROUP;
+
+    /** SiteWhereScriptCategory CRD name */
+    public static final String SITEWHERE_SCRIPT_CATEGORY_CRD_NAME = SITEWHERE_SCRIPT_CATEGORY_CRD_PLURAL + "."
+	    + SITEWHERE_SCRIPTING_API_GROUP;
 
     /** SiteWhereScriptTemplate CRD name */
     public static final String SITEWHERE_SCRIPT_TEMPLATE_CRD_NAME = SITEWHERE_SCRIPT_TEMPLATE_CRD_PLURAL + "."
