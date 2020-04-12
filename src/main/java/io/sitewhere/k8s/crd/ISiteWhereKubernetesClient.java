@@ -248,4 +248,21 @@ public interface ISiteWhereKubernetesClient {
      * @throws SiteWhereK8sException
      */
     void createNewTenantEngine(SiteWhereTenant tenant, SiteWhereMicroservice microservice) throws SiteWhereK8sException;
+
+    /**
+     * Get the active version of a given script.
+     * 
+     * @param script
+     * @return
+     */
+    SiteWhereScriptVersion getActiveVersion(SiteWhereScript script);
+
+    /**
+     * Get parent script for version.
+     * 
+     * @param version
+     * @return
+     * @throws SiteWhereK8sException
+     */
+    SiteWhereScript getParentScript(SiteWhereScriptVersion version) throws SiteWhereK8sException;
 }

@@ -497,6 +497,46 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	getTenantEngines().withName(tenantEngineName).createOrReplace(engine);
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getActiveVersion(io.sitewhere
+     * .k8s.crd.tenant.scripting.SiteWhereScript)
+     */
+    @Override
+    public SiteWhereScriptVersion getActiveVersion(SiteWhereScript script) {
+	String namespace = script.getMetadata().getNamespace();
+	String activeVersion = script.getSpec().getActiveVersion();
+	if (activeVersion != null) {
+	    return getScriptsVersions().inNamespace(namespace).withName(activeVersion).get();
+	} else {
+	    return null;
+	}
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getParentScript(io.sitewhere.
+     * k8s.crd.tenant.scripting.version.SiteWhereScriptVersion)
+     */
+    @Override
+    public SiteWhereScript getParentScript(SiteWhereScriptVersion version) throws SiteWhereK8sException {
+	String namespace = version.getMetadata().getNamespace();
+	String scriptId = version.getMetadata().getLabels().get(ResourceLabels.LABEL_SCRIPTING_SCRIPT_ID);
+	if (scriptId == null) {
+	    throw new SiteWhereK8sException(
+		    String.format("No script id associated with version: %s", version.getMetadata().getName()));
+	}
+	SiteWhereScriptList list = getScripts().inNamespace(namespace)
+		.withLabel(ResourceLabels.LABEL_SCRIPTING_SCRIPT_ID, scriptId).list();
+	if (list.getItems().size() > 1) {
+	    throw new SiteWhereK8sException(String.format("Multiple scripts found with script id: %s", scriptId));
+	} else if (list.getItems().size() == 0) {
+	    throw new SiteWhereK8sException(String.format("No scripts found with script id: %s", scriptId));
+	} else {
+	    return list.getItems().get(0);
+	}
+    }
+
     protected KubernetesClient getClient() {
 	return client;
     }
