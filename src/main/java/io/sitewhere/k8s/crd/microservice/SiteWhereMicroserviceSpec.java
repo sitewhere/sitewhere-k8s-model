@@ -53,6 +53,9 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Debug specification */
     private MicroserviceDebugSpecification debug;
 
+    /** Logging specification */
+    private MicroserviceLoggingSpecification logging;
+
     public String getName() {
 	return name;
     }
@@ -131,5 +134,13 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 
     public void setDebug(MicroserviceDebugSpecification debug) {
 	this.debug = debug;
+    }
+
+    public MicroserviceLoggingSpecification getLogging() {
+	return logging;
+    }
+
+    public void setLogging(MicroserviceLoggingSpecification logging) {
+	this.logging = logging;
     }
 }
