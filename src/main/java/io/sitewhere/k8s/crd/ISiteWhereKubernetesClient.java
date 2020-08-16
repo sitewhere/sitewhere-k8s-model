@@ -12,6 +12,21 @@ import java.util.Map;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.sitewhere.k8s.crd.exception.SiteWhereK8sException;
+import io.sitewhere.k8s.crd.infra.catalog.DoneableInfraCatalog;
+import io.sitewhere.k8s.crd.infra.catalog.InfraCatalog;
+import io.sitewhere.k8s.crd.infra.catalog.InfraCatalogList;
+import io.sitewhere.k8s.crd.infra.catalog.item.DoneableInfraCatalogItem;
+import io.sitewhere.k8s.crd.infra.catalog.item.InfraCatalogItem;
+import io.sitewhere.k8s.crd.infra.catalog.item.InfraCatalogItemList;
+import io.sitewhere.k8s.crd.infra.catalog.itemgroup.DoneableInfraCatalogItemGroup;
+import io.sitewhere.k8s.crd.infra.catalog.itemgroup.InfraCatalogItemGroup;
+import io.sitewhere.k8s.crd.infra.catalog.itemgroup.InfraCatalogItemGroupList;
+import io.sitewhere.k8s.crd.infra.component.DoneableInfraComponent;
+import io.sitewhere.k8s.crd.infra.component.InfraComponent;
+import io.sitewhere.k8s.crd.infra.component.InfraComponentList;
+import io.sitewhere.k8s.crd.infra.configuration.DoneableInfraConfiguration;
+import io.sitewhere.k8s.crd.infra.configuration.InfraConfiguration;
+import io.sitewhere.k8s.crd.infra.configuration.InfraConfigurationList;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
@@ -158,6 +173,41 @@ public interface ISiteWhereKubernetesClient {
      * @return
      */
     MixedOperation<SiteWhereScriptVersion, SiteWhereScriptVersionList, DoneableSiteWhereScriptVersion, Resource<SiteWhereScriptVersion, DoneableSiteWhereScriptVersion>> getScriptsVersions();
+
+    /**
+     * Gets context for operating on infrastructure catalogs.
+     * 
+     * @return
+     */
+    MixedOperation<InfraCatalog, InfraCatalogList, DoneableInfraCatalog, Resource<InfraCatalog, DoneableInfraCatalog>> getInfraCatalogs();
+
+    /**
+     * Gets context for operating on infrastructure catalog item groups.
+     * 
+     * @return
+     */
+    MixedOperation<InfraCatalogItemGroup, InfraCatalogItemGroupList, DoneableInfraCatalogItemGroup, Resource<InfraCatalogItemGroup, DoneableInfraCatalogItemGroup>> getInfraCatalogItemGroups();
+
+    /**
+     * Gets context for operating on infrastructure catalog items.
+     * 
+     * @return
+     */
+    MixedOperation<InfraCatalogItem, InfraCatalogItemList, DoneableInfraCatalogItem, Resource<InfraCatalogItem, DoneableInfraCatalogItem>> getInfraCatalogItems();
+
+    /**
+     * Gets context for operating on infrastructure configurations.
+     * 
+     * @return
+     */
+    MixedOperation<InfraConfiguration, InfraConfigurationList, DoneableInfraConfiguration, Resource<InfraConfiguration, DoneableInfraConfiguration>> getInfraConfigurations();
+
+    /**
+     * Gets context for operating on infrastructure components.
+     * 
+     * @return
+     */
+    MixedOperation<InfraComponent, InfraComponentList, DoneableInfraComponent, Resource<InfraComponent, DoneableInfraComponent>> getInfraComponents();
 
     /**
      * Get functional area for a microservice.

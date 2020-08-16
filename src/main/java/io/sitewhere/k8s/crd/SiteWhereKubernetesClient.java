@@ -19,6 +19,21 @@ import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.kubernetes.internal.KubernetesDeserializer;
 import io.sitewhere.k8s.crd.exception.SiteWhereK8sException;
+import io.sitewhere.k8s.crd.infra.catalog.DoneableInfraCatalog;
+import io.sitewhere.k8s.crd.infra.catalog.InfraCatalog;
+import io.sitewhere.k8s.crd.infra.catalog.InfraCatalogList;
+import io.sitewhere.k8s.crd.infra.catalog.item.DoneableInfraCatalogItem;
+import io.sitewhere.k8s.crd.infra.catalog.item.InfraCatalogItem;
+import io.sitewhere.k8s.crd.infra.catalog.item.InfraCatalogItemList;
+import io.sitewhere.k8s.crd.infra.catalog.itemgroup.DoneableInfraCatalogItemGroup;
+import io.sitewhere.k8s.crd.infra.catalog.itemgroup.InfraCatalogItemGroup;
+import io.sitewhere.k8s.crd.infra.catalog.itemgroup.InfraCatalogItemGroupList;
+import io.sitewhere.k8s.crd.infra.component.DoneableInfraComponent;
+import io.sitewhere.k8s.crd.infra.component.InfraComponent;
+import io.sitewhere.k8s.crd.infra.component.InfraComponentList;
+import io.sitewhere.k8s.crd.infra.configuration.DoneableInfraConfiguration;
+import io.sitewhere.k8s.crd.infra.configuration.InfraConfiguration;
+import io.sitewhere.k8s.crd.infra.configuration.InfraConfigurationList;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstanceList;
@@ -86,6 +101,11 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	register(SiteWhereScriptTemplate.class);
 	register(SiteWhereScript.class);
 	register(SiteWhereScriptVersion.class);
+	register(InfraCatalog.class);
+	register(InfraCatalogItemGroup.class);
+	register(InfraCatalogItem.class);
+	register(InfraConfiguration.class);
+	register(InfraComponent.class);
     }
 
     public SiteWhereKubernetesClient(KubernetesClient client) {
@@ -306,6 +326,81 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	}
 	return getClient().customResources(crd, SiteWhereScriptVersion.class, SiteWhereScriptVersionList.class,
 		DoneableSiteWhereScriptVersion.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInfraCatalogs()
+     */
+    @Override
+    public MixedOperation<InfraCatalog, InfraCatalogList, DoneableInfraCatalog, Resource<InfraCatalog, DoneableInfraCatalog>> getInfraCatalogs() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_INFRA_CATALOG_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_INFRA_CATALOG_CRD_NAME));
+	}
+	return getClient().customResources(crd, InfraCatalog.class, InfraCatalogList.class, DoneableInfraCatalog.class);
+    }
+
+    /*
+     * @see
+     * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInfraCatalogItemGroups()
+     */
+    @Override
+    public MixedOperation<InfraCatalogItemGroup, InfraCatalogItemGroupList, DoneableInfraCatalogItemGroup, Resource<InfraCatalogItemGroup, DoneableInfraCatalogItemGroup>> getInfraCatalogItemGroups() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_INFRA_CATALOG_ITEM_GROUP_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_INFRA_CATALOG_ITEM_GROUP_CRD_NAME));
+	}
+	return getClient().customResources(crd, InfraCatalogItemGroup.class, InfraCatalogItemGroupList.class,
+		DoneableInfraCatalogItemGroup.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInfraCatalogItems()
+     */
+    @Override
+    public MixedOperation<InfraCatalogItem, InfraCatalogItemList, DoneableInfraCatalogItem, Resource<InfraCatalogItem, DoneableInfraCatalogItem>> getInfraCatalogItems() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_INFRA_CATALOG_ITEM_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_INFRA_CATALOG_ITEM_CRD_NAME));
+	}
+	return getClient().customResources(crd, InfraCatalogItem.class, InfraCatalogItemList.class,
+		DoneableInfraCatalogItem.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInfraConfigurations()
+     */
+    @Override
+    public MixedOperation<InfraConfiguration, InfraConfigurationList, DoneableInfraConfiguration, Resource<InfraConfiguration, DoneableInfraConfiguration>> getInfraConfigurations() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_INFRA_CONFIGURATION_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_INFRA_CONFIGURATION_CRD_NAME));
+	}
+	return getClient().customResources(crd, InfraConfiguration.class, InfraConfigurationList.class,
+		DoneableInfraConfiguration.class);
+    }
+
+    /*
+     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInfraComponents()
+     */
+    @Override
+    public MixedOperation<InfraComponent, InfraComponentList, DoneableInfraComponent, Resource<InfraComponent, DoneableInfraComponent>> getInfraComponents() {
+	CustomResourceDefinition crd = getClient().customResourceDefinitions()
+		.withName(ApiConstants.SITEWHERE_INFRA_COMPONENT_CRD_NAME).get();
+	if (crd == null) {
+	    throw new RuntimeException(
+		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_INFRA_COMPONENT_CRD_NAME));
+	}
+	return getClient().customResources(crd, InfraComponent.class, InfraComponentList.class,
+		DoneableInfraComponent.class);
     }
 
     /*

@@ -24,6 +24,9 @@ public class ApiConstants {
     /** SiteWhere scripting API group */
     public static final String SITEWHERE_SCRIPTING_API_GROUP = "scripting.sitewhere.io";
 
+    /** SiteWhere infrastructure API group */
+    public static final String SITEWHERE_INFRA_API_GROUP = "infra.sitewhere.io";
+
     /** SiteWhereInstance CRD plural */
     public static final String SITEWHERE_INSTANCE_CRD_PLURAL = "instances";
 
@@ -65,6 +68,21 @@ public class ApiConstants {
 
     /** SiteWhereScriptVersion CRD plural */
     public static final String SITEWHERE_SCRIPT_VERSION_CRD_PLURAL = "scriptversions";
+
+    /** InfraCatalog CRD plural */
+    public static final String SITEWHERE_INFRA_CATALOG_CRD_PLURAL = "catalogs";
+
+    /** InfraCatalogItemGroup CRD plural */
+    public static final String SITEWHERE_INFRA_CATALOG_ITEM_GROUP_CRD_PLURAL = "catalogitemgroups";
+
+    /** InfraCatalogItem CRD plural */
+    public static final String SITEWHERE_INFRA_CATALOG_ITEM_CRD_PLURAL = "catalogitems";
+
+    /** InfraConfiguration CRD plural */
+    public static final String SITEWHERE_INFRA_CONFIGURATION_CRD_PLURAL = "configurations";
+
+    /** InfraComponent CRD plural */
+    public static final String SITEWHERE_INFRA_COMPONENT_CRD_PLURAL = "components";
 
     /** SiteWhereInstance CRD name */
     public static final String SITEWHERE_INSTANCE_CRD_NAME = SITEWHERE_INSTANCE_CRD_PLURAL + "." + SITEWHERE_API_GROUP;
@@ -115,4 +133,24 @@ public class ApiConstants {
     /** SiteWhereScriptVersion CRD name */
     public static final String SITEWHERE_SCRIPT_VERSION_CRD_NAME = SITEWHERE_SCRIPT_VERSION_CRD_PLURAL + "."
 	    + SITEWHERE_SCRIPTING_API_GROUP;
+
+    /** InfraCatalog CRD name */
+    public static final String SITEWHERE_INFRA_CATALOG_CRD_NAME = SITEWHERE_INFRA_CATALOG_CRD_PLURAL + "."
+	    + SITEWHERE_INFRA_API_GROUP;
+
+    /** InfraCatalogItemGroup CRD name */
+    public static final String SITEWHERE_INFRA_CATALOG_ITEM_GROUP_CRD_NAME = SITEWHERE_INFRA_CATALOG_ITEM_GROUP_CRD_PLURAL
+	    + "." + SITEWHERE_INFRA_API_GROUP;
+
+    /** InfraCatalogItem CRD name */
+    public static final String SITEWHERE_INFRA_CATALOG_ITEM_CRD_NAME = SITEWHERE_INFRA_CATALOG_ITEM_CRD_PLURAL + "."
+	    + SITEWHERE_INFRA_API_GROUP;
+
+    /** InfraConfiguration CRD name */
+    public static final String SITEWHERE_INFRA_CONFIGURATION_CRD_NAME = SITEWHERE_INFRA_CONFIGURATION_CRD_PLURAL + "."
+	    + SITEWHERE_INFRA_API_GROUP;
+
+    /** InfraComponent CRD name */
+    public static final String SITEWHERE_INFRA_COMPONENT_CRD_NAME = SITEWHERE_INFRA_COMPONENT_CRD_PLURAL + "."
+	    + SITEWHERE_INFRA_API_GROUP;
 }

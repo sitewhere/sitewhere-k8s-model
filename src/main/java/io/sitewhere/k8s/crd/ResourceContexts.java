@@ -46,4 +46,29 @@ public class ResourceContexts {
     public static final CustomResourceDefinitionContext SCRIPT_VERSION_CONTEXT = new CustomResourceDefinitionContext.Builder()
 	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_SCRIPTING_API_GROUP)
 	    .withPlural(ApiConstants.SITEWHERE_SCRIPT_VERSION_CRD_PLURAL).withScope(SCOPE_NAMESPACED).build();
+
+    /** Context used for accessing infra catalogs */
+    public static final CustomResourceDefinitionContext INFRA_CATALOG_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_INFRA_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_INFRA_CATALOG_CRD_PLURAL).withScope(SCOPE_CLUSTER).build();
+
+    /** Context used for accessing infra catalog item groups */
+    public static final CustomResourceDefinitionContext INFRA_CATALOG_ITEM_GROUP_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_INFRA_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_INFRA_CATALOG_ITEM_GROUP_CRD_PLURAL).withScope(SCOPE_CLUSTER).build();
+
+    /** Context used for accessing infra catalog items */
+    public static final CustomResourceDefinitionContext INFRA_CATALOG_ITEM_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_INFRA_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_INFRA_CATALOG_ITEM_CRD_PLURAL).withScope(SCOPE_CLUSTER).build();
+
+    /** Context used for accessing infra configurations */
+    public static final CustomResourceDefinitionContext INFRA_CONFIGURATION_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_INFRA_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_INFRA_CONFIGURATION_CRD_PLURAL).withScope(SCOPE_CLUSTER).build();
+
+    /** Context used for accessing infra components */
+    public static final CustomResourceDefinitionContext INFRA_COMPONENT_CONTEXT = new CustomResourceDefinitionContext.Builder()
+	    .withVersion(ApiConstants.SITEWHERE_API_VERSION).withGroup(ApiConstants.SITEWHERE_INFRA_API_GROUP)
+	    .withPlural(ApiConstants.SITEWHERE_INFRA_COMPONENT_CRD_PLURAL).withScope(SCOPE_CLUSTER).build();
 }
