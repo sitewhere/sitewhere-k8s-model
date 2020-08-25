@@ -33,6 +33,12 @@ public class ResourceLabels {
     /** Label for script category */
     public static final String LABEL_SCRIPTING_SCRIPT_CATEGORY = "scripting.sitewhere.io/category";
 
+    /** Label for infra catalog */
+    public static final String LABEL_INFRA_CATALOG = "infra.sitewhere.io/catalog";
+
+    /** Label for infra configuration */
+    public static final String LABEL_INFRA_CONFIGURATION = "infra.sitewhere.io/configuration";
+
     /** Label for Kubernetes name */
     public static final String LABEL_K8S_NAME = "app.kubernetes.io/name";
 
