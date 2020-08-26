@@ -12,12 +12,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+import io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec;
 
 /**
  * SiteWhereInstance CRD specification.
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class SiteWhereInstanceSpec implements KubernetesResource {
+public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInstanceSpec {
 
     /** Serial version UID */
     private static final long serialVersionUID = -8588114929765353983L;
@@ -34,6 +35,11 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
     /** Global instance XML configuration */
     private JsonNode configuration;
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getInstanceNamespace()
+     */
+    @Override
     public String getInstanceNamespace() {
 	return instanceNamespace;
     }
@@ -42,6 +48,12 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
 	this.instanceNamespace = instanceNamespace;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getConfigurationTemplate
+     * ()
+     */
+    @Override
     public String getConfigurationTemplate() {
 	return configurationTemplate;
     }
@@ -50,6 +62,11 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
 	this.configurationTemplate = configurationTemplate;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getDatasetTemplate()
+     */
+    @Override
     public String getDatasetTemplate() {
 	return datasetTemplate;
     }
@@ -58,6 +75,10 @@ public class SiteWhereInstanceSpec implements KubernetesResource {
 	this.datasetTemplate = datasetTemplate;
     }
 
+    /*
+     * @see io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getConfiguration()
+     */
+    @Override
     public JsonNode getConfiguration() {
 	return configuration;
     }

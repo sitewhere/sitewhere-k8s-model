@@ -12,13 +12,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+import io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec;
 import io.sitewhere.k8s.crd.common.ComponentHelmSpec;
 
 /**
  * SiteWhereMicroservice CRD specification.
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class SiteWhereMicroserviceSpec implements KubernetesResource {
+public class SiteWhereMicroserviceSpec implements KubernetesResource, ISiteWhereMicroserviceSpec {
 
     /** Serial version UID */
     private static final long serialVersionUID = -4468391827753999167L;
@@ -56,6 +57,10 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
     /** Logging specification */
     private MicroserviceLoggingSpecification logging;
 
+    /*
+     * @see io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getName()
+     */
+    @Override
     public String getName() {
 	return name;
     }
@@ -64,6 +69,11 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.name = name;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getDescription()
+     */
+    @Override
     public String getDescription() {
 	return description;
     }
@@ -72,6 +82,10 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.description = description;
     }
 
+    /*
+     * @see io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getIcon()
+     */
+    @Override
     public String getIcon() {
 	return icon;
     }
@@ -80,6 +94,11 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.icon = icon;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getReplicas()
+     */
+    @Override
     public int getReplicas() {
 	return replicas;
     }
@@ -88,6 +107,12 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.replicas = replicas;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getConfiguration
+     * ()
+     */
+    @Override
     public JsonNode getConfiguration() {
 	return configuration;
     }
@@ -96,6 +121,11 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.configuration = configuration;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#isMultitenant()
+     */
+    @Override
     public boolean isMultitenant() {
 	return multitenant;
     }
@@ -104,6 +134,10 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.multitenant = multitenant;
     }
 
+    /*
+     * @see io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getHelm()
+     */
+    @Override
     public ComponentHelmSpec getHelm() {
 	return helm;
     }
@@ -112,6 +146,11 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.helm = helm;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getPodSpec()
+     */
+    @Override
     public MicroservicePodSpecification getPodSpec() {
 	return podSpec;
     }
@@ -120,6 +159,11 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.podSpec = podSpec;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getServiceSpec()
+     */
+    @Override
     public MicroserviceServiceSpecification getServiceSpec() {
 	return serviceSpec;
     }
@@ -128,6 +172,10 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.serviceSpec = serviceSpec;
     }
 
+    /*
+     * @see io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getDebug()
+     */
+    @Override
     public MicroserviceDebugSpecification getDebug() {
 	return debug;
     }
@@ -136,6 +184,11 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource {
 	this.debug = debug;
     }
 
+    /*
+     * @see
+     * io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#getLogging()
+     */
+    @Override
     public MicroserviceLoggingSpecification getLogging() {
 	return logging;
     }

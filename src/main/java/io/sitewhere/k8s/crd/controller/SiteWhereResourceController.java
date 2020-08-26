@@ -20,7 +20,7 @@ import io.fabric8.kubernetes.client.informers.SharedIndexInformer;
 import io.fabric8.kubernetes.client.informers.SharedInformerFactory;
 import io.fabric8.kubernetes.client.informers.cache.Cache;
 import io.fabric8.kubernetes.client.informers.cache.Lister;
-import io.sitewhere.k8s.crd.SiteWhereKubernetesClient;
+import io.sitewhere.k8s.SiteWhereKubernetesClient;
 
 /**
  * Common base class for controllers that manage k8s resources.
