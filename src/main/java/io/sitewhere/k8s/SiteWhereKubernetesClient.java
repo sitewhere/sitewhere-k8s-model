@@ -5,7 +5,7 @@
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
-package io.sitewhere.k8s.crd;
+package io.sitewhere.k8s;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +18,9 @@ import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.kubernetes.internal.KubernetesDeserializer;
+import io.sitewhere.k8s.api.ISiteWhereKubernetesClient;
+import io.sitewhere.k8s.crd.ApiConstants;
+import io.sitewhere.k8s.crd.ResourceLabels;
 import io.sitewhere.k8s.crd.exception.SiteWhereK8sException;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
 import io.sitewhere.k8s.crd.instance.SiteWhereInstance;
