@@ -12,7 +12,6 @@ import java.util.Map;
 
 import com.google.common.base.CaseFormat;
 
-import io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinition;
 import io.fabric8.kubernetes.client.CustomResource;
 import io.fabric8.kubernetes.client.KubernetesClient;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
@@ -20,6 +19,7 @@ import io.fabric8.kubernetes.client.dsl.Resource;
 import io.fabric8.kubernetes.internal.KubernetesDeserializer;
 import io.sitewhere.k8s.api.ISiteWhereKubernetesClient;
 import io.sitewhere.k8s.crd.ApiConstants;
+import io.sitewhere.k8s.crd.ResourceContexts;
 import io.sitewhere.k8s.crd.ResourceLabels;
 import io.sitewhere.k8s.crd.exception.SiteWhereK8sException;
 import io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance;
@@ -110,28 +110,16 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getInstances()
      */
     public MixedOperation<SiteWhereInstance, SiteWhereInstanceList, DoneableSiteWhereInstance, Resource<SiteWhereInstance, DoneableSiteWhereInstance>> getInstances() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_INSTANCE_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(
-		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_MICROSERVICE_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereInstance.class, SiteWhereInstanceList.class,
-		DoneableSiteWhereInstance.class);
+	return getClient().customResources(ResourceContexts.INSTANCE_CONTEXT, SiteWhereInstance.class,
+		SiteWhereInstanceList.class, DoneableSiteWhereInstance.class);
     }
 
     /*
      * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getMicroservices()
      */
     public MixedOperation<SiteWhereMicroservice, SiteWhereMicroserviceList, DoneableSiteWhereMicroservice, Resource<SiteWhereMicroservice, DoneableSiteWhereMicroservice>> getMicroservices() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_MICROSERVICE_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(
-		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_MICROSERVICE_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereMicroservice.class, SiteWhereMicroserviceList.class,
-		DoneableSiteWhereMicroservice.class);
+	return getClient().customResources(ResourceContexts.MICROSERVICE_CONTEXT, SiteWhereMicroservice.class,
+		SiteWhereMicroserviceList.class, DoneableSiteWhereMicroservice.class);
     }
 
     /*
@@ -139,13 +127,9 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      * getInstanceConfigurationTemplates()
      */
     public MixedOperation<InstanceConfigurationTemplate, InstanceConfigurationTemplateList, DoneableInstanceConfigurationTemplate, Resource<InstanceConfigurationTemplate, DoneableInstanceConfigurationTemplate>> getInstanceConfigurationTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_ICT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_ICT_CRD_NAME));
-	}
-	return getClient().customResources(crd, InstanceConfigurationTemplate.class,
-		InstanceConfigurationTemplateList.class, DoneableInstanceConfigurationTemplate.class);
+	return getClient().customResources(ResourceContexts.INSTANCE_CONFIG_TEMPLATE_CONTEXT,
+		InstanceConfigurationTemplate.class, InstanceConfigurationTemplateList.class,
+		DoneableInstanceConfigurationTemplate.class);
     }
 
     /*
@@ -154,12 +138,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      */
     @Override
     public MixedOperation<InstanceDatasetTemplate, InstanceDatasetTemplateList, DoneableInstanceDatasetTemplate, Resource<InstanceDatasetTemplate, DoneableInstanceDatasetTemplate>> getInstanceDatasetTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_IDT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_IDT_CRD_NAME));
-	}
-	return getClient().customResources(crd, InstanceDatasetTemplate.class, InstanceDatasetTemplateList.class,
+	return getClient().customResources(ResourceContexts.INSTANCE_DATASET_TEMPLATE_CONTEXT,
+		InstanceDatasetTemplate.class, InstanceDatasetTemplateList.class,
 		DoneableInstanceDatasetTemplate.class);
     }
 
@@ -167,13 +147,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getTenants()
      */
     public MixedOperation<SiteWhereTenant, SiteWhereTenantList, DoneableSiteWhereTenant, Resource<SiteWhereTenant, DoneableSiteWhereTenant>> getTenants() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_TENANT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_TENANT_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereTenant.class, SiteWhereTenantList.class,
-		DoneableSiteWhereTenant.class);
+	return getClient().customResources(ResourceContexts.TENANT_CONTEXT, SiteWhereTenant.class,
+		SiteWhereTenantList.class, DoneableSiteWhereTenant.class);
     }
 
     /*
@@ -181,13 +156,9 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      * getTenantConfigurationTemplates()
      */
     public MixedOperation<TenantConfigurationTemplate, TenantConfigurationTemplateList, DoneableTenantConfigurationTemplate, Resource<TenantConfigurationTemplate, DoneableTenantConfigurationTemplate>> getTenantConfigurationTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_TCT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_TCT_CRD_NAME));
-	}
-	return getClient().customResources(crd, TenantConfigurationTemplate.class,
-		TenantConfigurationTemplateList.class, DoneableTenantConfigurationTemplate.class);
+	return getClient().customResources(ResourceContexts.TENANT_CONFIG_TEMPLATE_CONTEXT,
+		TenantConfigurationTemplate.class, TenantConfigurationTemplateList.class,
+		DoneableTenantConfigurationTemplate.class);
     }
 
     /*
@@ -196,27 +167,16 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      */
     @Override
     public MixedOperation<TenantDatasetTemplate, TenantDatasetTemplateList, DoneableTenantDatasetTemplate, Resource<TenantDatasetTemplate, DoneableTenantDatasetTemplate>> getTenantDatasetTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_TDT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_TDT_CRD_NAME));
-	}
-	return getClient().customResources(crd, TenantDatasetTemplate.class, TenantDatasetTemplateList.class,
-		DoneableTenantDatasetTemplate.class);
+	return getClient().customResources(ResourceContexts.TENANT_DATASET_TEMPLATE_CONTEXT,
+		TenantDatasetTemplate.class, TenantDatasetTemplateList.class, DoneableTenantDatasetTemplate.class);
     }
 
     /*
      * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getTenantEngines()
      */
     public MixedOperation<SiteWhereTenantEngine, SiteWhereTenantEngineList, DoneableSiteWhereTenantEngine, Resource<SiteWhereTenantEngine, DoneableSiteWhereTenantEngine>> getTenantEngines() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_TENANT_ENGINE_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(
-		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_TENANT_ENGINE_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereTenantEngine.class, SiteWhereTenantEngineList.class,
-		DoneableSiteWhereTenantEngine.class);
+	return getClient().customResources(ResourceContexts.TENANT_ENGINE_CONTEXT, SiteWhereTenantEngine.class,
+		SiteWhereTenantEngineList.class, DoneableSiteWhereTenantEngine.class);
     }
 
     /*
@@ -224,13 +184,9 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      * getTenantEngineConfigurationTemplates()
      */
     public MixedOperation<TenantEngineConfigurationTemplate, TenantEngineConfigurationTemplateList, DoneableTenantEngineConfigurationTemplate, Resource<TenantEngineConfigurationTemplate, DoneableTenantEngineConfigurationTemplate>> getTenantEngineConfigurationTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_TECT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_TECT_CRD_NAME));
-	}
-	return getClient().customResources(crd, TenantEngineConfigurationTemplate.class,
-		TenantEngineConfigurationTemplateList.class, DoneableTenantEngineConfigurationTemplate.class);
+	return getClient().customResources(ResourceContexts.TENANT_ENGINE_CONFIG_TEMPLATE_CONTEXT,
+		TenantEngineConfigurationTemplate.class, TenantEngineConfigurationTemplateList.class,
+		DoneableTenantEngineConfigurationTemplate.class);
     }
 
     /**
@@ -243,13 +199,9 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      * getTenantEngineDatasetTemplates()
      */
     public MixedOperation<TenantEngineDatasetTemplate, TenantEngineDatasetTemplateList, DoneableTenantEngineDatasetTemplate, Resource<TenantEngineDatasetTemplate, DoneableTenantEngineDatasetTemplate>> getTenantEngineDatasetTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_TEDT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_TEDT_CRD_NAME));
-	}
-	return getClient().customResources(crd, TenantEngineDatasetTemplate.class,
-		TenantEngineDatasetTemplateList.class, DoneableTenantEngineDatasetTemplate.class);
+	return getClient().customResources(ResourceContexts.TENANT_ENGINE_DATASET_TEMPLATE_CONTEXT,
+		TenantEngineDatasetTemplate.class, TenantEngineDatasetTemplateList.class,
+		DoneableTenantEngineDatasetTemplate.class);
     }
 
     /*
@@ -257,14 +209,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      */
     @Override
     public MixedOperation<SiteWhereScriptCategory, SiteWhereScriptCategoryList, DoneableSiteWhereScriptCategory, Resource<SiteWhereScriptCategory, DoneableSiteWhereScriptCategory>> getScriptCategories() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_SCRIPT_CATEGORY_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(
-		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_CATEGORY_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereScriptCategory.class, SiteWhereScriptCategoryList.class,
-		DoneableSiteWhereScriptCategory.class);
+	return getClient().customResources(ResourceContexts.SCRIPT_CATEGORY_CONTEXT, SiteWhereScriptCategory.class,
+		SiteWhereScriptCategoryList.class, DoneableSiteWhereScriptCategory.class);
     }
 
     /*
@@ -272,14 +218,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      */
     @Override
     public MixedOperation<SiteWhereScriptTemplate, SiteWhereScriptTemplateList, DoneableSiteWhereScriptTemplate, Resource<SiteWhereScriptTemplate, DoneableSiteWhereScriptTemplate>> getScriptTemplates() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_SCRIPT_TEMPLATE_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(
-		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_TEMPLATE_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereScriptTemplate.class, SiteWhereScriptTemplateList.class,
-		DoneableSiteWhereScriptTemplate.class);
+	return getClient().customResources(ResourceContexts.SCRIPT_TEMPLATE_CONTEXT, SiteWhereScriptTemplate.class,
+		SiteWhereScriptTemplateList.class, DoneableSiteWhereScriptTemplate.class);
     }
 
     /*
@@ -287,13 +227,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      */
     @Override
     public MixedOperation<SiteWhereScript, SiteWhereScriptList, DoneableSiteWhereScript, Resource<SiteWhereScript, DoneableSiteWhereScript>> getScripts() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_SCRIPT_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereScript.class, SiteWhereScriptList.class,
-		DoneableSiteWhereScript.class);
+	return getClient().customResources(ResourceContexts.SCRIPT_CONTEXT, SiteWhereScript.class,
+		SiteWhereScriptList.class, DoneableSiteWhereScript.class);
     }
 
     /*
@@ -301,14 +236,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
      */
     @Override
     public MixedOperation<SiteWhereScriptVersion, SiteWhereScriptVersionList, DoneableSiteWhereScriptVersion, Resource<SiteWhereScriptVersion, DoneableSiteWhereScriptVersion>> getScriptsVersions() {
-	CustomResourceDefinition crd = getClient().customResourceDefinitions()
-		.withName(ApiConstants.SITEWHERE_SCRIPT_VERSION_CRD_NAME).get();
-	if (crd == null) {
-	    throw new RuntimeException(
-		    String.format("CRD missing for '%s'", ApiConstants.SITEWHERE_SCRIPT_VERSION_CRD_NAME));
-	}
-	return getClient().customResources(crd, SiteWhereScriptVersion.class, SiteWhereScriptVersionList.class,
-		DoneableSiteWhereScriptVersion.class);
+	return getClient().customResources(ResourceContexts.SCRIPT_VERSION_CONTEXT, SiteWhereScriptVersion.class,
+		SiteWhereScriptVersionList.class, DoneableSiteWhereScriptVersion.class);
     }
 
     /*

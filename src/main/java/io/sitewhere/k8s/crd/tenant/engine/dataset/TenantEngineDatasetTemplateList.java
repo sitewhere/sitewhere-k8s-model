@@ -8,9 +8,8 @@
 package io.sitewhere.k8s.crd.tenant.engine.dataset;
 
 import io.fabric8.kubernetes.client.CustomResourceList;
-import io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngine;
 
-public class TenantEngineDatasetTemplateList extends CustomResourceList<SiteWhereTenantEngine> {
+public class TenantEngineDatasetTemplateList extends CustomResourceList<TenantEngineDatasetTemplate> {
 
     /** Serial version UID */
     private static final long serialVersionUID = -8256145107326549137L;
