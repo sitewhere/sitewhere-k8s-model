@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.sitewhere.k8s.crd.instance.configuration;
+package io.sitewhere.k8s.api.microservice;
 
-import io.fabric8.kubernetes.api.model.KubernetesResource;
+public interface ISiteWhereMicroservice extends ISiteWhereMicroserviceSpec {
 
-/**
- * InstanceConfigurationTemplate CRD status.
- */
-public class InstanceConfigurationTemplateStatus implements KubernetesResource {
-
-    /** Serial version UID */
-    private static final long serialVersionUID = 2029007566497875926L;
+    /**
+     * Get microservice id.
+     * 
+     * @return
+     */
+    String getId();
 }

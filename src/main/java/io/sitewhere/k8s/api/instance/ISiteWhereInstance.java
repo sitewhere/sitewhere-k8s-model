@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.sitewhere.k8s.crd.instance.configuration;
+package io.sitewhere.k8s.api.instance;
 
-import io.fabric8.kubernetes.api.model.KubernetesResource;
+public interface ISiteWhereInstance extends ISiteWhereInstanceSpec {
 
-/**
- * InstanceConfigurationTemplate CRD status.
- */
-public class InstanceConfigurationTemplateStatus implements KubernetesResource {
-
-    /** Serial version UID */
-    private static final long serialVersionUID = 2029007566497875926L;
+    /**
+     * Get instance id.
+     * 
+     * @return
+     */
+    String getId();
 }
