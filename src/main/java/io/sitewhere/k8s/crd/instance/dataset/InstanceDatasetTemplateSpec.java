@@ -22,12 +22,13 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+import io.sitewhere.k8s.api.instance.IInstanceDatasetTemplateSpec;
 
 /**
  * InstanceDatasetTemplate CRD specification.
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class InstanceDatasetTemplateSpec implements KubernetesResource {
+public class InstanceDatasetTemplateSpec implements KubernetesResource, IInstanceDatasetTemplateSpec {
 
     /** Serial version UID */
     private static final long serialVersionUID = 1024070640571988118L;
@@ -35,6 +36,10 @@ public class InstanceDatasetTemplateSpec implements KubernetesResource {
     /** Datasets indexed by functional area */
     private Map<String, String> datasets = new HashMap<>();
 
+    /*
+     * @see io.sitewhere.k8s.api.instance.IInstanceDatasetTemplateSpec#getDatasets()
+     */
+    @Override
     public Map<String, String> getDatasets() {
 	return datasets;
     }

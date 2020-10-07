@@ -20,12 +20,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.KubernetesResource;
+import io.sitewhere.k8s.api.instance.IInstanceConfigurationTemplateSpec;
 
 /**
  * InstanceConfigurationTemplate CRD specification.
  */
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class InstanceConfigurationTemplateSpec implements KubernetesResource {
+public class InstanceConfigurationTemplateSpec implements KubernetesResource, IInstanceConfigurationTemplateSpec {
 
     /** Serial version UID */
     private static final long serialVersionUID = -3283412961517074958L;
@@ -33,6 +34,11 @@ public class InstanceConfigurationTemplateSpec implements KubernetesResource {
     /** Global configuration */
     private JsonNode configuration;
 
+    /*
+     * @see io.sitewhere.k8s.api.instance.IInstanceConfigurationTemplateSpec#
+     * getConfiguration()
+     */
+    @Override
     public JsonNode getConfiguration() {
 	return configuration;
     }
