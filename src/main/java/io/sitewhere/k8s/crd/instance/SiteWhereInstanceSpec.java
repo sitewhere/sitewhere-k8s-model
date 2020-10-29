@@ -31,6 +31,12 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
     /** Serial version UID */
     private static final long serialVersionUID = -8588114929765353983L;
 
+    /** Instance name */
+    private String name;
+
+    /** Instance description */
+    private String description;
+
     /** Instance namespace */
     private String instanceNamespace;
 
@@ -42,6 +48,30 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
 
     /** Global instance XML configuration */
     private JsonNode configuration;
+
+    /*
+     * @see io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getName()
+     */
+    @Override
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getDescription()
+     */
+    @Override
+    public String getDescription() {
+	return description;
+    }
+
+    public void setDescription(String description) {
+	this.description = description;
+    }
 
     /*
      * @see

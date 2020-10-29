@@ -20,6 +20,20 @@ import com.fasterxml.jackson.databind.JsonNode;
 public interface ISiteWhereInstanceSpec {
 
     /**
+     * Instance name.
+     * 
+     * @return
+     */
+    String getName();
+
+    /**
+     * Instance description.
+     * 
+     * @return
+     */
+    String getDescription();
+
+    /**
      * Instance namespace
      */
     String getInstanceNamespace();
