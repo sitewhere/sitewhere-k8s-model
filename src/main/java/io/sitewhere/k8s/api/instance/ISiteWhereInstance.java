@@ -15,6 +15,10 @@
  */
 package io.sitewhere.k8s.api.instance;
 
+import java.util.List;
+
+import io.sitewhere.k8s.api.microservice.ISiteWhereMicroservice;
+
 public interface ISiteWhereInstance extends ISiteWhereInstanceSpec {
 
     /**
@@ -23,4 +27,11 @@ public interface ISiteWhereInstance extends ISiteWhereInstanceSpec {
      * @return
      */
     String getId();
+
+    /**
+     * Get list of instance microservices.
+     * 
+     * @return
+     */
+    List<ISiteWhereMicroservice> getMicroservices();
 }

@@ -35,21 +35,29 @@ public interface ISiteWhereInstanceSpec {
 
     /**
      * Instance namespace
+     * 
+     * @return
      */
     String getInstanceNamespace();
 
     /**
      * Instance configuration template name
+     * 
+     * @return
      */
     String getConfigurationTemplate();
 
     /**
      * Instance dataset template name
+     * 
+     * @return
      */
     String getDatasetTemplate();
 
     /**
      * Global instance XML configuration
+     * 
+     * @return
      */
     JsonNode getConfiguration();
 }
