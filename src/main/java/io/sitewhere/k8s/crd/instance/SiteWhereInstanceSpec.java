@@ -37,9 +37,6 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
     /** Instance description */
     private String description;
 
-    /** Instance namespace */
-    private String instanceNamespace;
-
     /** Instance configuration template name */
     private String configurationTemplate;
 
@@ -71,19 +68,6 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
 
     public void setDescription(String description) {
 	this.description = description;
-    }
-
-    /*
-     * @see
-     * io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getInstanceNamespace()
-     */
-    @Override
-    public String getInstanceNamespace() {
-	return instanceNamespace;
-    }
-
-    public void setInstanceNamespace(String instanceNamespace) {
-	this.instanceNamespace = instanceNamespace;
     }
 
     /*

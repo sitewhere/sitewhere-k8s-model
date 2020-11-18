@@ -34,13 +34,6 @@ public interface ISiteWhereInstanceSpec {
     String getDescription();
 
     /**
-     * Instance namespace
-     * 
-     * @return
-     */
-    String getInstanceNamespace();
-
-    /**
      * Instance configuration template name
      * 
      * @return
