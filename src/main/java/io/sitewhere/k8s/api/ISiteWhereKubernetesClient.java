@@ -68,6 +68,9 @@ import io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersionList;
  */
 public interface ISiteWhereKubernetesClient {
 
+    /** Constance for SiteWhere system namespace */
+    public static final String NS_SITEWHERE_SYSTEM = "sitewhere-system";
+
     /**
      * Gets context for operating on SiteWhere instances.
      * 
