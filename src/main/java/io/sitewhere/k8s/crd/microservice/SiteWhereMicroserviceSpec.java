@@ -41,6 +41,9 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource, ISiteWhere
     /** Icon displayed for microservice */
     private String icon;
 
+    /** Functional area */
+    private String functionalArea;
+
     /** Number of replicas */
     private int replicas = 1;
 
@@ -100,6 +103,19 @@ public class SiteWhereMicroserviceSpec implements KubernetesResource, ISiteWhere
 
     public void setIcon(String icon) {
 	this.icon = icon;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec#
+     * getFunctionalArea()
+     */
+    @Override
+    public String getFunctionalArea() {
+	return functionalArea;
+    }
+
+    public void setFunctionalArea(String functionalArea) {
+	this.functionalArea = functionalArea;
     }
 
     /*

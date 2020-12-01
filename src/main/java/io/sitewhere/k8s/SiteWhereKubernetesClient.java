@@ -249,21 +249,6 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
     }
 
     /*
-     * @see io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getFunctionalArea(io.
-     * sitewhere.k8s.crd.microservice.SiteWhereMicroservice)
-     */
-    @Override
-    public String getFunctionalArea(SiteWhereMicroservice microservice) {
-	String functionalArea = microservice.getMetadata().getLabels()
-		.get(ResourceLabels.LABEL_SITEWHERE_FUNCTIONAL_AREA);
-	if (functionalArea == null) {
-	    throw new RuntimeException(String.format("Microservice '%s' does not have a functional area label.",
-		    microservice.getMetadata().getName()));
-	}
-	return functionalArea;
-    }
-
-    /*
      * @see
      * io.sitewhere.k8s.crd.ISiteWhereKubernetesClient#getAllMicroservices(java.lang
      * .String)
@@ -282,7 +267,8 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
     public SiteWhereMicroservice getMicroserviceForIdentifier(String namespace, String identifier) {
 	SiteWhereMicroserviceList list = getAllMicroservices(namespace);
 	for (SiteWhereMicroservice microservice : list.getItems()) {
-	    if (getFunctionalArea(microservice).equals(identifier)) {
+	    String functionalArea = microservice.getSpec().getFunctionalArea();
+	    if (functionalArea.equals(identifier)) {
 		return microservice;
 	    }
 	}
@@ -368,7 +354,7 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 		    tenant.getSpec().getConfigurationTemplate());
 	    throw new SiteWhereK8sException(message);
 	}
-	String functionalArea = getFunctionalArea(microservice);
+	String functionalArea = microservice.getSpec().getFunctionalArea();
 	String target = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_CAMEL, functionalArea);
 	String tecTemplateName = tenantTemplate.getSpec().getTenantEngineTemplates().get(target);
 	if (tecTemplateName == null) {
@@ -416,10 +402,9 @@ public class SiteWhereKubernetesClient implements ISiteWhereKubernetesClient {
 	engine.getMetadata().setNamespace(tenant.getMetadata().getNamespace());
 
 	Map<String, String> labels = new HashMap<>();
-	String functionalArea = getFunctionalArea(microservice);
+	String functionalArea = microservice.getSpec().getFunctionalArea();
 	labels.put(ResourceLabels.LABEL_SITEWHERE_TENANT, tenant.getMetadata().getName());
 	labels.put(ResourceLabels.LABEL_SITEWHERE_MICROSERVICE, microservice.getMetadata().getName());
-	labels.put(ResourceLabels.LABEL_SITEWHERE_FUNCTIONAL_AREA, functionalArea);
 	engine.getMetadata().setLabels(labels);
 
 	// Look up tenant configuration template for tenant/microservice combination.

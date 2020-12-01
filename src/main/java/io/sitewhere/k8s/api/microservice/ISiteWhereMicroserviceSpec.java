@@ -41,6 +41,13 @@ public interface ISiteWhereMicroserviceSpec {
     String getIcon();
 
     /**
+     * Functional area for service.
+     * 
+     * @return
+     */
+    String getFunctionalArea();
+
+    /**
      * Number of replicas
      */
     int getReplicas();
