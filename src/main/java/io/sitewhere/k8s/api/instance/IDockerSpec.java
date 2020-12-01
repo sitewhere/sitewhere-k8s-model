@@ -15,35 +15,29 @@
  */
 package io.sitewhere.k8s.api.instance;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
-public interface ISiteWhereInstanceSpec {
+/**
+ * Docker Specificacion
+ */
+public interface IDockerSpec {
 
     /**
-     * Intance Docker Spec
+     * Docker registry name
      * 
      * @return
      */
-    IDockerSpec getDockerSpec();
+    String getRegistry();
 
     /**
-     * Instance configuration template name
+     * Docker repository name
      * 
      * @return
      */
-    String getConfigurationTemplate();
+    String getRepository();
 
     /**
-     * Instance dataset template name
+     * Docker tag name
      * 
      * @return
      */
-    String getDatasetTemplate();
-
-    /**
-     * Global instance XML configuration
-     * 
-     * @return
-     */
-    JsonNode getConfiguration();
+    String getTag();
 }
