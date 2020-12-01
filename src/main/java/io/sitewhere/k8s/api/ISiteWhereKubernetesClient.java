@@ -171,14 +171,6 @@ public interface ISiteWhereKubernetesClient {
     MixedOperation<SiteWhereScriptVersion, SiteWhereScriptVersionList, DoneableSiteWhereScriptVersion, Resource<SiteWhereScriptVersion, DoneableSiteWhereScriptVersion>> getScriptsVersions();
 
     /**
-     * Get functional area for a microservice.
-     * 
-     * @param microservice
-     * @return
-     */
-    String getFunctionalArea(SiteWhereMicroservice microservice);
-
-    /**
      * Get all microservices in the given namespace.
      * 
      * @param namespace
