@@ -15,24 +15,32 @@
  */
 package io.sitewhere.k8s.crd.tenant;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * Holds branding information for a tenant.
  */
 public class TenantBrandingSpecification {
 
     /** Background color */
+    @JsonInclude(Include.NON_NULL)
     private String backgroundColor;
 
     /** Foreground color */
+    @JsonInclude(Include.NON_NULL)
     private String foregroundColor;
 
     /** Border color */
+    @JsonInclude(Include.NON_NULL)
     private String borderColor;
 
     /** Icon */
+    @JsonInclude(Include.NON_NULL)
     private String icon;
 
     /** Image URL */
+    @JsonInclude(Include.NON_NULL)
     private String imageUrl;
 
     public String getBackgroundColor() {

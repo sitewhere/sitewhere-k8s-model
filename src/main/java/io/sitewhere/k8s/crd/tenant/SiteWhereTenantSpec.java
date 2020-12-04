@@ -17,6 +17,8 @@ package io.sitewhere.k8s.crd.tenant;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -32,24 +34,31 @@ public class SiteWhereTenantSpec implements KubernetesResource {
     private static final long serialVersionUID = 8782678554803455928L;
 
     /** Tenant name */
+    @JsonInclude(Include.NON_NULL)
     private String name;
 
     /** Authenticaton token */
+    @JsonInclude(Include.NON_NULL)
     private String authenticationToken;
 
     /** Authorized user ids */
+    @JsonInclude(Include.NON_NULL)
     private String[] authorizedUserIds;
 
     /** Configuration template */
+    @JsonInclude(Include.NON_NULL)
     private String configurationTemplate;
 
     /** Dataset template */
+    @JsonInclude(Include.NON_NULL)
     private String datasetTemplate;
 
     /** Branding information */
+    @JsonInclude(Include.NON_NULL)
     private TenantBrandingSpecification branding;
 
     /** Metadata */
+    @JsonInclude(Include.NON_NULL)
     private Map<String, String> metadata;
 
     public String getName() {
