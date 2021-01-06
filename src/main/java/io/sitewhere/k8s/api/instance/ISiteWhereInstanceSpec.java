@@ -15,7 +15,11 @@
  */
 package io.sitewhere.k8s.api.instance;
 
+import java.util.List;
+
 import com.fasterxml.jackson.databind.JsonNode;
+
+import io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec;
 
 public interface ISiteWhereInstanceSpec {
 
@@ -46,4 +50,11 @@ public interface ISiteWhereInstanceSpec {
      * @return
      */
     JsonNode getConfiguration();
+
+    /**
+     * Get list of microservice specs.
+     * 
+     * @return
+     */
+    List<? extends ISiteWhereMicroserviceSpec> getMicroservices();
 }

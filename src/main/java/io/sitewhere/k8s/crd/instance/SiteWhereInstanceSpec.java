@@ -15,6 +15,9 @@
  */
 package io.sitewhere.k8s.crd.instance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -22,6 +25,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.fabric8.kubernetes.api.model.KubernetesResource;
 import io.sitewhere.k8s.api.instance.IDockerSpec;
 import io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec;
+import io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec;
+import io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceSpec;
 
 /**
  * SiteWhereInstance CRD specification.
@@ -43,6 +48,9 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
 
     /** Global instance XML configuration */
     private JsonNode configuration;
+
+    /** List of microservices in instance */
+    private List<? extends ISiteWhereMicroserviceSpec> microservices = new ArrayList<>();
 
     /*
      * @see
@@ -93,5 +101,17 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
 
     public void setDockerSpec(DockerSpec dockerSpec) {
 	this.dockerSpec = dockerSpec;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getMicroservices()
+     */
+    @Override
+    public List<? extends ISiteWhereMicroserviceSpec> getMicroservices() {
+	return microservices;
+    }
+
+    public void setMicroservices(List<SiteWhereMicroserviceSpec> microservices) {
+	this.microservices = microservices;
     }
 }
