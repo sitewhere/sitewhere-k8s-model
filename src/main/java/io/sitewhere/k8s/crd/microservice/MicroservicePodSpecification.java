@@ -23,6 +23,7 @@ import io.fabric8.kubernetes.api.model.ContainerPort;
 import io.fabric8.kubernetes.api.model.EnvVar;
 import io.fabric8.kubernetes.api.model.Probe;
 import io.fabric8.kubernetes.api.model.ResourceRequirements;
+import io.sitewhere.k8s.crd.instance.DockerSpec;
 
 /**
  * Settings specific to microservice pods.
@@ -46,6 +47,9 @@ public class MicroservicePodSpecification {
 
     /** Image pull policy */
     private String imagePullPolicy;
+
+    /** Docker specification */
+    private DockerSpec dockerSpec;
 
     /** List of container ports */
     private List<ContainerPort> ports = new ArrayList<ContainerPort>();
@@ -108,6 +112,14 @@ public class MicroservicePodSpecification {
 
     public void setImagePullPolicy(String imagePullPolicy) {
 	this.imagePullPolicy = imagePullPolicy;
+    }
+
+    public DockerSpec getDockerSpec() {
+	return dockerSpec;
+    }
+
+    public void setDockerSpec(DockerSpec dockerSpec) {
+	this.dockerSpec = dockerSpec;
     }
 
     public List<ContainerPort> getPorts() {
