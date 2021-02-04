@@ -15,9 +15,13 @@
  */
 package io.sitewhere.k8s.crd.microservice;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * Settings specific to microservice debugger settings.
  */
+@JsonInclude(Include.NON_NULL)
 public class MicroserviceDebugSpecification {
 
     /** Enablement flag */

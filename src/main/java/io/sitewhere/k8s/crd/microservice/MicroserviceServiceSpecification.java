@@ -18,11 +18,15 @@ package io.sitewhere.k8s.crd.microservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import io.fabric8.kubernetes.api.model.ServicePort;
 
 /**
  * Settings specific to microservice service.
  */
+@JsonInclude(Include.NON_NULL)
 public class MicroserviceServiceSpecification {
 
     /** Service type */
