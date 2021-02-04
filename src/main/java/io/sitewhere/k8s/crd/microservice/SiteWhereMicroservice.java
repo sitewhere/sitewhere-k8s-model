@@ -15,12 +15,16 @@
  */
 package io.sitewhere.k8s.crd.microservice;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import io.fabric8.kubernetes.api.model.ObjectMeta;
 import io.fabric8.kubernetes.client.CustomResource;
 
 /**
  * SiteWhereMicroservice CRD.
  */
+@JsonInclude(Include.NON_NULL)
 public class SiteWhereMicroservice extends CustomResource {
 
     /** Serial version UID */

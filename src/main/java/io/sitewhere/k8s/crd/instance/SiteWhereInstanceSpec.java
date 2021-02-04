@@ -18,6 +18,8 @@ package io.sitewhere.k8s.crd.instance;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -31,11 +33,18 @@ import io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceSpec;
 /**
  * SiteWhereInstance CRD specification.
  */
+@JsonInclude(Include.NON_NULL)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInstanceSpec {
 
     /** Serial version UID */
     private static final long serialVersionUID = -8588114929765353983L;
+
+    /** Name displayed for instance */
+    private String name;
+
+    /** Description displayed for instance */
+    private String description;
 
     /** Instance configuration template name */
     private String configurationTemplate;
@@ -51,6 +60,30 @@ public class SiteWhereInstanceSpec implements KubernetesResource, ISiteWhereInst
 
     /** List of microservices in instance */
     private List<? extends ISiteWhereMicroserviceSpec> microservices = new ArrayList<>();
+
+    /*
+     * @see io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getName()
+     */
+    @Override
+    public String getName() {
+	return name;
+    }
+
+    public void setName(String name) {
+	this.name = name;
+    }
+
+    /*
+     * @see io.sitewhere.k8s.api.instance.ISiteWhereInstanceSpec#getDescription()
+     */
+    @Override
+    public String getDescription() {
+	return description;
+    }
+
+    public void setDescription(String description) {
+	this.description = description;
+    }
 
     /*
      * @see
