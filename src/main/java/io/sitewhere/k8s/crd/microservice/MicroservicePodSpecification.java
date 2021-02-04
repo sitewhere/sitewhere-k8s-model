@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import io.fabric8.kubernetes.api.model.ContainerPort;
 import io.fabric8.kubernetes.api.model.EnvVar;
 import io.fabric8.kubernetes.api.model.Probe;
@@ -28,6 +31,7 @@ import io.sitewhere.k8s.crd.instance.DockerSpec;
 /**
  * Settings specific to microservice pods.
  */
+@JsonInclude(Include.NON_NULL)
 public class MicroservicePodSpecification {
 
     /** Pod annotations */

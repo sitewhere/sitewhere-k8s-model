@@ -15,6 +15,8 @@
  */
 package io.sitewhere.k8s.crd.microservice;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -26,6 +28,7 @@ import io.sitewhere.k8s.crd.common.ComponentHelmSpec;
 /**
  * SiteWhereMicroservice CRD specification.
  */
+@JsonInclude(Include.NON_NULL)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class SiteWhereMicroserviceSpec implements KubernetesResource, ISiteWhereMicroserviceSpec {
 

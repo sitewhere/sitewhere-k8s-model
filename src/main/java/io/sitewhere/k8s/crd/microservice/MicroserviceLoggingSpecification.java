@@ -18,9 +18,13 @@ package io.sitewhere.k8s.crd.microservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * Settings specific to configuring microservice log levels.
  */
+@JsonInclude(Include.NON_NULL)
 public class MicroserviceLoggingSpecification {
 
     /** List of logging overrides */

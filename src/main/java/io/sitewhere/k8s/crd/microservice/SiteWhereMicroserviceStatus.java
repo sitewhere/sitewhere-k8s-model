@@ -18,6 +18,8 @@ package io.sitewhere.k8s.crd.microservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -26,6 +28,7 @@ import io.fabric8.kubernetes.api.model.KubernetesResource;
 /**
  * SiteWhereMicroservice CRD status.
  */
+@JsonInclude(Include.NON_NULL)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class SiteWhereMicroserviceStatus implements KubernetesResource {
 

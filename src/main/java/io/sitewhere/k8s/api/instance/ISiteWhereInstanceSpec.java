@@ -24,6 +24,20 @@ import io.sitewhere.k8s.api.microservice.ISiteWhereMicroserviceSpec;
 public interface ISiteWhereInstanceSpec {
 
     /**
+     * Get name displayed for instance.
+     * 
+     * @return
+     */
+    String getName();
+
+    /**
+     * Get description displayed for instance.
+     * 
+     * @return
+     */
+    String getDescription();
+
+    /**
      * Intance Docker Spec
      * 
      * @return
