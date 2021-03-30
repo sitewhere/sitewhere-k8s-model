@@ -1,16 +1,18 @@
 plugins {
-    id "com.github.hierynomus.license" version "0.15.0"
+    id 'org.springframework.boot' version '2.4.4' apply false
+    id 'com.github.hierynomus.license' version '0.15.0'
+    id 'java'
 }
 
 apply plugin: 'distribution'
     
 allprojects {
     group = 'com.sitewhere'
-    version = '3.0.1'
+    version = '3.1.0'
 	
     repositories {
-        maven { url "https://repo.maven.apache.org/maven2" }
-		mavenLocal()
+        mavenLocal()
+        mavenCentral()
     }
 	apply plugin: 'eclipse'
 	
@@ -27,13 +29,14 @@ allprojects {
     
 	// Library dependencies.
     dependencies {
-    	compile platform('io.quarkus:quarkus-bom:1.7.2.Final')
-    	
-    	// Force latest version of k8s client.
+        // Sping dependency managment.
+        implementation platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+           	
+    	// Fabric8 Kuberentes client.
 		compile group: 'io.fabric8', name: 'kubernetes-client', version: '4.13.0'
 	
 		// Used for helper functions.
-		compile group: 'com.google.guava', name: 'guava'
+		implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
 		
         testCompile group: 'junit', name: 'junit'
     }
