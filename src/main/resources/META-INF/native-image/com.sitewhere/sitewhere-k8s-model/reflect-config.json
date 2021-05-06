@@ -1,0 +1,632 @@
+[
+  {
+    "name": "io.fabric8.kubernetes.client.CustomResource",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.client.CustomResourceList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ConfigMapKeySelector",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ContainerPort",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.EnvVar",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.EnvVarSource",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ExecAction",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.FieldsV1",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.HTTPGetAction",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.IntOrString",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.IntOrString$Deserializer",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.IntOrString$Serializer",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ListMeta",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ManagedFieldsEntry",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ObjectFieldSelector",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.ObjectMeta",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },  
+  {
+    "name": "io.fabric8.kubernetes.api.model.OwnerReference",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.Probe",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.Quantity",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.Quantity$Deserializer",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.Quantity$Serializer",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.ResourceFieldSelector",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.ResourceRequirements",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.SecretKeySelector",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.ServicePort",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.TCPSocketAction",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.api.model.WatchEvent",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.fabric8.kubernetes.internal.KubernetesDeserializer",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.SiteWhereInstance",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.SiteWhereInstanceList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.SiteWhereInstanceSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.SiteWhereInstanceStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.DoneableSiteWhereInstance",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.DockerSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.configuration.InstanceConfigurationTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.configuration.DoneableInstanceConfigurationTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.dataset.InstanceDatasetTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.instance.dataset.DoneableInstanceDatasetTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.DoneableSiteWhereMicroservice",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.MicroserviceDebugSpecification",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.MicroserviceLoggingEntry",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.MicroserviceLoggingSpecification",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.MicroservicePodSpecification",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.MicroserviceServiceSpecification",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.SiteWhereMicroservice",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.microservice.SiteWhereMicroserviceStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.SiteWhereTenant",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.SiteWhereTenantList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.SiteWhereTenantSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.SiteWhereTenantStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.DoneableSiteWhereTenant",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.TenantBrandingSpecification",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.configuration.TenantConfigurationTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.configuration.TenantConfigurationTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.configuration.TenantConfigurationTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.configuration.TenantConfigurationTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.configuration.DoneableTenantConfigurationTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.dataset.TenantDatasetTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.dataset.TenantDatasetTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.dataset.TenantDatasetTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.dataset.TenantDatasetTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.dataset.DoneableTenantDatasetTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngine",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngineList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngineSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.SiteWhereTenantEngineStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.DoneableSiteWhereTenantEngine",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfigurationTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfigurationTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfigurationTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.configuration.TenantEngineConfigurationTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.configuration.DoneableTenantEngineConfigurationTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.dataset.TenantEngineDatasetTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.engine.dataset.DoneableTenantEngineDatasetTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScript",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.SiteWhereScriptStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.DoneableSiteWhereScript",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategory",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategoryList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategorySpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.category.SiteWhereScriptCategoryStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.category.DoneableSiteWhereScriptCategory",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.template.SiteWhereScriptTemplateStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.template.DoneableSiteWhereScriptTemplate",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersion",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersionList",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersionSpec",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.version.SiteWhereScriptVersionStatus",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "io.sitewhere.k8s.crd.tenant.scripting.version.DoneableSiteWhereScriptVersion",
+    "allDeclaredFields": true,
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  }
+]
